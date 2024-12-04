@@ -20,19 +20,28 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="终端乱码问题解决最近发现有时候在windows终端 (就是那个黑框框) 运行自己写的C\C++程序时，有时候显示中文是乱码 后面发现如果我将源文件编码改为GBK，再编译后，运行便不会出现乱码。查阅资料后，知道了一条命令可以查看当前终端使用的编码格式。 1chcp  可以看到当前编码为936，对应的编码格式为GBK  因此，使用GBK编码的文件，编译后的程序在终端运行自然不会出现乱码问题，但是如果是">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://example.com/2024/11/30/hello-world/index.html">
+<meta property="og:title" content="终端乱码问题解决">
+<meta property="og:url" content="http://example.com/2024/12/04/2024-12-4/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="终端乱码问题解决最近发现有时候在windows终端 (就是那个黑框框) 运行自己写的C\C++程序时，有时候显示中文是乱码 后面发现如果我将源文件编码改为GBK，再编译后，运行便不会出现乱码。查阅资料后，知道了一条命令可以查看当前终端使用的编码格式。 1chcp  可以看到当前编码为936，对应的编码格式为GBK  因此，使用GBK编码的文件，编译后的程序在终端运行自然不会出现乱码问题，但是如果是">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-11-30T09:48:46.845Z">
-<meta property="article:modified_time" content="2024-11-30T09:48:46.846Z">
+<meta property="og:image" content="https://pic.imgdb.cn/item/674fef5cd0e0a243d4dd0de4.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/674feef1d0e0a243d4dd0dcd.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/674fed96d0e0a243d4dd0d66.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/674ff0f4d0e0a243d4dd0e70.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/674ff115d0e0a243d4dd0e84.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/674ff14bd0e0a243d4dd0ea6.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/674ff165d0e0a243d4dd0eb1.png">
+<meta property="article:published_time" content="2024-12-04T05:51:15.000Z">
+<meta property="article:modified_time" content="2024-12-04T06:08:43.495Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="问题">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/674fef5cd0e0a243d4dd0de4.png">
 
-<link rel="canonical" href="http://example.com/2024/11/30/hello-world/">
+<link rel="canonical" href="http://example.com/2024/12/04/2024-12-4/">
 
 
 <script id="page-configurations">
@@ -45,7 +54,7 @@
   };
 </script>
 
-  <title>Hello World | Hexo</title>
+  <title>终端乱码问题解决 | Hexo</title>
   
 
 
@@ -150,7 +159,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/11/30/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/04/2024-12-4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -163,7 +172,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Hello World
+          终端乱码问题解决
         </h1>
 
         <div class="post-meta">
@@ -172,8 +181,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2024-11-30 17:48:46" itemprop="dateCreated datePublished" datetime="2024-11-30T17:48:46+08:00">2024-11-30</time>
+              <time title="Created: 2024-12-04 13:51:15 / Modified: 14:08:43" itemprop="dateCreated datePublished" datetime="2024-12-04T13:51:15+08:00">2024-12-04</time>
             </span>
 
           
@@ -187,19 +197,35 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+        <h1 id="终端乱码问题解决"><a href="#终端乱码问题解决" class="headerlink" title="终端乱码问题解决"></a>终端乱码问题解决</h1><p>最近发现有时候在windows终端 <del>(就是那个黑框框)</del> 运行自己写的C\C++程序时，有时候显示中文是乱码</p>
+<p>后面发现如果我将源文件编码改为GBK，再编译后，运行便不会出现乱码。查阅资料后，知道了一条命令可以查看当前终端使用的编码格式。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chcp</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>可以看到当前编码为936，对应的编码格式为GBK</p>
+<p><img src="https://pic.imgdb.cn/item/674fef5cd0e0a243d4dd0de4.png"></p>
+<p>因此，使用GBK编码的文件，编译后的程序在终端运行自然不会出现乱码问题，但是如果是使用UTF-8的，就会乱码了。</p>
+<p>我通过查找资料后，发现解决这个问题的方法有很多</p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><h3 id="临时解决"><a href="#临时解决" class="headerlink" title="临时解决"></a>临时解决</h3><p>直接每次在运行程序前，在终端输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chcp 65001</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>将编码改为UTF-8便不会出错了</p>
+<p><img src="https://pic.imgdb.cn/item/674feef1d0e0a243d4dd0dcd.png"></p>
+<p>可以看到当前编码为65001，对应的编码格式为UTF-8</p>
+<p>或者，可以使用GBK编码源文件，<del>但是都2024年了，还没人用统一码(UTF-8)吗？</del></p>
+<h3 id="永久解决"><a href="#永久解决" class="headerlink" title="永久解决"></a>永久解决</h3><p>对于我这种有强迫症的人来说，一下用这个编码，一下用那个编码，实在太难接受了。必须想办法统一，因此还是有可以永久解决的办法的。</p>
+<p>首先右键单击桌面右下角，打开调整日期和时间</p>
+<p><img src="https://pic.imgdb.cn/item/674fed96d0e0a243d4dd0d66.png"></p>
+<p>然后依次点击</p>
+<p><img src="https://pic.imgdb.cn/item/674ff0f4d0e0a243d4dd0e70.png"></p>
+<hr>
+<p><img src="https://pic.imgdb.cn/item/674ff115d0e0a243d4dd0e84.png"></p>
+<hr>
+<p><img src="https://pic.imgdb.cn/item/674ff14bd0e0a243d4dd0ea6.png"></p>
+<hr>
+<p><img src="https://pic.imgdb.cn/item/674ff165d0e0a243d4dd0eb1.png"></p>
+<p>打上勾后，重启，之后终端的默认编码格式就都变成UTF-8了。</p>
+<p><em>PS:不过之后打开一些比较老的软件，可能会出现乱码问题。</em></p>
+<p><em>原因是，我猜想是这些老的软件采用的是GBK编码，所以同样是出现了编码不兼容的问题。</em></p>
 
     </div>
 
@@ -208,17 +234,20 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%97%AE%E9%A2%98/" rel="tag"># 问题</a>
+          </div>
 
         
 
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2024/11/30/my-first-blog/" rel="next" title="我第一个博客">
-      我第一个博客 <i class="fa fa-chevron-right"></i>
+    <a href="/2024/11/30/my-first-blog/" rel="prev" title="我第一个博客">
+      <i class="fa fa-chevron-left"></i> 我第一个博客
     </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -277,7 +306,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%88%E7%AB%AF%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3"><span class="nav-number">1.</span> <span class="nav-text">终端乱码问题解决</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">解决方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%B4%E6%97%B6%E8%A7%A3%E5%86%B3"><span class="nav-number">1.1.1.</span> <span class="nav-text">临时解决</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B0%B8%E4%B9%85%E8%A7%A3%E5%86%B3"><span class="nav-number">1.1.2.</span> <span class="nav-text">永久解决</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
