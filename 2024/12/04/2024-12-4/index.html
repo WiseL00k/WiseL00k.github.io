@@ -17,15 +17,15 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="终端乱码问题解决 最近发现有时候在windows终端 (就是那个黑框框) 运行自己写的C\C++程序时，有时候显示中文是乱码  后面发现如果我将源文件编码改为GBK，再编译后，运行便不会出现乱码。查阅资料后，知道了一条命令可以查看当前终端使用的编码格式。  1   chcp   可以看到当前编码为936，对应的编码格式为GBK    因此，使用GBK编码的文件，编译后的程序在终端运行自然不会出现乱">
+  <meta name="description" content="终端乱码问题解决最近发现有时候在windows终端 (就是那个黑框框) 运行自己写的C\C++程序时，有时候显示的中文是乱码">
 <meta property="og:type" content="article">
 <meta property="og:title" content="终端乱码问题解决">
 <meta property="og:url" content="http://example.com/2024/12/04/2024-12-4/index.html">
 <meta property="og:site_name" content="WK的博客">
-<meta property="og:description" content="终端乱码问题解决 最近发现有时候在windows终端 (就是那个黑框框) 运行自己写的C\C++程序时，有时候显示中文是乱码  后面发现如果我将源文件编码改为GBK，再编译后，运行便不会出现乱码。查阅资料后，知道了一条命令可以查看当前终端使用的编码格式。  1   chcp   可以看到当前编码为936，对应的编码格式为GBK    因此，使用GBK编码的文件，编译后的程序在终端运行自然不会出现乱">
+<meta property="og:description" content="终端乱码问题解决最近发现有时候在windows终端 (就是那个黑框框) 运行自己写的C\C++程序时，有时候显示的中文是乱码">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pic.imgdb.cn/item/674fef5cd0e0a243d4dd0de4.png">
 <meta property="og:image" content="https://pic.imgdb.cn/item/674feef1d0e0a243d4dd0dcd.png">
@@ -35,7 +35,7 @@
 <meta property="og:image" content="https://pic.imgdb.cn/item/674ff14bd0e0a243d4dd0ea6.png">
 <meta property="og:image" content="https://pic.imgdb.cn/item/674ff165d0e0a243d4dd0eb1.png">
 <meta property="article:published_time" content="2024-12-04T05:51:15.000Z">
-<meta property="article:modified_time" content="2024-12-04T06:08:43.495Z">
+<meta property="article:modified_time" content="2024-12-05T16:59:57.400Z">
 <meta property="article:author" content="WiseL00k">
 <meta property="article:tag" content="问题">
 <meta name="twitter:card" content="summary">
@@ -131,6 +131,11 @@
     <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
 
   </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
 
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
@@ -167,7 +172,7 @@
     <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/04/2024-12-4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/cheems.gif">
       <meta itemprop="name" content="WiseL00k">
       <meta itemprop="description" content="">
     </span>
@@ -186,10 +191,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2024-12-04 13:51:15 / 修改时间：14:08:43" itemprop="dateCreated datePublished" datetime="2024-12-04T13:51:15+08:00">2024-12-04</time>
+              <time title="创建时间：2024-12-04 13:51:15" itemprop="dateCreated datePublished" datetime="2024-12-04T13:51:15+08:00">2024-12-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-12-06 00:59:57" itemprop="dateModified" datetime="2024-12-06T00:59:57+08:00">2024-12-06</time>
+              </span>
 
           
 
@@ -202,7 +213,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="终端乱码问题解决"><a href="#终端乱码问题解决" class="headerlink" title="终端乱码问题解决"></a>终端乱码问题解决</h1><p>最近发现有时候在windows终端 <del>(就是那个黑框框)</del> 运行自己写的C\C++程序时，有时候显示中文是乱码</p>
+        <h1 id="终端乱码问题解决"><a href="#终端乱码问题解决" class="headerlink" title="终端乱码问题解决"></a>终端乱码问题解决</h1><p>最近发现有时候在windows终端 <del>(就是那个黑框框)</del> 运行自己写的C\C++程序时，有时候显示的中文是乱码</p>
+<span id="more"></span>
+
 <p>后面发现如果我将源文件编码改为GBK，再编译后，运行便不会出现乱码。查阅资料后，知道了一条命令可以查看当前终端使用的编码格式。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chcp</span><br></pre></td></tr></table></figure>
 
@@ -230,7 +243,7 @@
 <p><img src="https://pic.imgdb.cn/item/674ff165d0e0a243d4dd0eb1.png"></p>
 <p>打上勾后，重启，之后终端的默认编码格式就都变成UTF-8了。</p>
 <p><em>PS:不过之后打开一些比较老的软件，可能会出现乱码问题。</em></p>
-<p><em>原因是，我猜想是这些老的软件采用的是GBK编码，所以同样是出现了编码不兼容的问题。</em></p>
+<p><em>我猜想是因为这些老的软件采用的是GBK编码，所以同样是出现了编码不兼容的问题。</em></p>
 
     </div>
 
@@ -320,6 +333,8 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="WiseL00k"
+      src="/images/cheems.gif">
   <p class="site-author-name" itemprop="name">WiseL00k</p>
   <div class="site-description" itemprop="description"></div>
 </div>
@@ -333,8 +348,10 @@
         </a>
       </div>
       <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
         <span class="site-state-item-count">2</span>
-        <span class="site-state-item-name">标签</span>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
@@ -366,7 +383,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">WiseL00k</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
 
         
@@ -392,7 +409,7 @@
 <script src="/js/motion.js"></script>
 
 
-<script src="/js/schemes/muse.js"></script>
+<script src="/js/schemes/pisces.js"></script>
 
 
 <script src="/js/next-boot.js"></script>
