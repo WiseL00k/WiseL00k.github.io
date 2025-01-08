@@ -31,7 +31,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/chxuan/vimplus/master/screenshots/vimplus-logo.png">
 <meta property="article:published_time" content="2024-12-17T15:56:28.000Z">
-<meta property="article:modified_time" content="2024-12-25T15:46:06.888Z">
+<meta property="article:modified_time" content="2025-01-08T16:44:04.675Z">
 <meta property="article:author" content="WiseL00k">
 <meta property="article:tag" content="系统配置">
 <meta name="twitter:card" content="summary">
@@ -195,7 +195,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-12-25 23:46:06" itemprop="dateModified" datetime="2024-12-25T23:46:06+08:00">2024-12-25</time>
+                <time title="修改时间：2025-01-09 00:44:04" itemprop="dateModified" datetime="2025-01-09T00:44:04+08:00">2025-01-09</time>
               </span>
 
           
@@ -244,6 +244,8 @@ cd ~/.vimplus
 <p><a target="_blank" rel="noopener" href="https://github.com/nvbn/thefuck">nvbn&#x2F;thefuck: Magnificent app which corrects your previous console command.</a></p>
 <h3 id="tldr"><a href="#tldr" class="headerlink" title="tldr"></a>tldr</h3><p>方便快捷查询命令常用用法</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/tldr-pages/tldr">tldr-pages&#x2F;tldr: 📚 Collaborative cheatsheets for console commands</a></p>
+<h3 id="fd"><a href="#fd" class="headerlink" title="fd"></a>fd</h3><p>一款替代find命令的工具</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/sharkdp/fd">sharkdp&#x2F;fd: A simple, fast and user-friendly alternative to ‘find’</a></p>
 
     </div>
 
@@ -327,7 +329,7 @@ cd ~/.vimplus
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="nav-number">2.</span> <span class="nav-text">操作系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux"><span class="nav-number">2.1.</span> <span class="nav-text">Linux</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Vim%E5%AE%89%E8%A3%85"><span class="nav-number">2.1.1.</span> <span class="nav-text">Vim安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#An-automatic-configuration-program-for-vim"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">An automatic configuration program for vim</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85vimplus"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">安装vimplus</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AENerd-Font"><span class="nav-number">2.1.1.3.</span> <span class="nav-text">设置Nerd Font</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E7%94%A8%E6%88%B7%E6%94%AF%E6%8C%81"><span class="nav-number">2.1.1.4.</span> <span class="nav-text">多用户支持</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0vimplus"><span class="nav-number">2.1.1.5.</span> <span class="nav-text">更新vimplus</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89"><span class="nav-number">2.1.1.6.</span> <span class="nav-text">自定义</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZSH%E5%AE%89%E8%A3%85"><span class="nav-number">2.1.2.</span> <span class="nav-text">ZSH安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Thefuck"><span class="nav-number">2.1.3.</span> <span class="nav-text">Thefuck</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tldr"><span class="nav-number">2.1.4.</span> <span class="nav-text">tldr</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="nav-number">2.</span> <span class="nav-text">操作系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux"><span class="nav-number">2.1.</span> <span class="nav-text">Linux</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Vim%E5%AE%89%E8%A3%85"><span class="nav-number">2.1.1.</span> <span class="nav-text">Vim安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#An-automatic-configuration-program-for-vim"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">An automatic configuration program for vim</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85vimplus"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">安装vimplus</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AENerd-Font"><span class="nav-number">2.1.1.3.</span> <span class="nav-text">设置Nerd Font</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E7%94%A8%E6%88%B7%E6%94%AF%E6%8C%81"><span class="nav-number">2.1.1.4.</span> <span class="nav-text">多用户支持</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0vimplus"><span class="nav-number">2.1.1.5.</span> <span class="nav-text">更新vimplus</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89"><span class="nav-number">2.1.1.6.</span> <span class="nav-text">自定义</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ZSH%E5%AE%89%E8%A3%85"><span class="nav-number">2.1.2.</span> <span class="nav-text">ZSH安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Thefuck"><span class="nav-number">2.1.3.</span> <span class="nav-text">Thefuck</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tldr"><span class="nav-number">2.1.4.</span> <span class="nav-text">tldr</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fd"><span class="nav-number">2.1.5.</span> <span class="nav-text">fd</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -343,14 +345,14 @@ cd ~/.vimplus
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
