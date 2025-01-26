@@ -1,1060 +1,197 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 7.3.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-  <link rel="stylesheet" href="/lib/pace/pace-theme-bounce.min.css">
-  <script src="/lib/pace/pace.min.js"></script>
-
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"wisel00k.site","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
-  </script>
-
-  <meta property="og:type" content="website">
-<meta property="og:title" content="WK的博客">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>WK's Blog - anything is possible</title><meta name="author" content="WiseL00k"><meta name="copyright" content="WiseL00k"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="个人博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="WK&#39;s Blog">
 <meta property="og:url" content="https://wisel00k.site/index.html">
-<meta property="og:site_name" content="WK的博客">
+<meta property="og:site_name" content="WK&#39;s Blog">
+<meta property="og:description" content="个人博客">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wisel00k.site/img/cheems.gif">
 <meta property="article:author" content="WiseL00k">
+<meta property="article:tag" content="WK, WiseL00k, wiselook">
 <meta name="twitter:card" content="summary">
-
-<link rel="canonical" href="https://wisel00k.site/">
-
-
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : true,
-    isPost : false,
-    lang   : 'zh-CN'
-  };
-</script>
-
-  <title>WK的博客</title>
-  
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">WK的博客</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
-</div>
-
-
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
-
-  </li>
-  </ul>
-</nav>
-
-
-
-
-</div>
-    </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content index posts-expand">
-            
+<meta name="twitter:image" content="https://wisel00k.site/img/cheems.gif"><link rel="shortcut icon" href="/img/WK.ico"><link rel="canonical" href="https://wisel00k.site/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
       
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wisel00k.site/2025/01/23/PCL2%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9A%AE%E8%82%A4%E6%95%99%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/cheems.gif">
-      <meta itemprop="name" content="WiseL00k">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WK的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/01/23/PCL2%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9A%AE%E8%82%A4%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">PCL2自定义皮肤教程</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2025-01-23 13:45:43 / 修改时间：13:56:48" itemprop="dateCreated datePublished" datetime="2025-01-23T13:45:43+08:00">2025-01-23</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="PCL2自定义皮肤教程"><a href="#PCL2自定义皮肤教程" class="headerlink" title="PCL2自定义皮肤教程"></a>PCL2自定义皮肤教程</h1><p>首先前往<a target="_blank" rel="noopener" href="https://littleskin.cn/?lang=zh_CN">LittleSkin - 快速、可靠的 Minecraft 皮肤站</a></p>
-<p>注册好账号</p>
-<p>之后在用户中心，按如下操作</p>
-<p><img src="https://pic1.imgdb.cn/item/6791d88bd0e0a243d4f70ada.png"></p>
-<p>添加好新角色后，在我的衣柜，给角色添加皮肤材质。</p>
-<p>之后在仪表盘处，将按钮拖到PCL2启动器处，<strong>真的就是拖过去</strong></p>
-<p><img src="https://pic1.imgdb.cn/item/6791d920d0e0a243d4f70b09.png"></p>
-<p>之后你的PCL2启动器，会变成这样</p>
-<p><img src="https://pic1.imgdb.cn/item/6791d980d0e0a243d4f70b2b.png"></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2025/01/23/PCL2%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9A%AE%E8%82%A4%E6%95%99%E7%A8%8B/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wisel00k.site/2025/01/19/%E9%81%87%E5%88%B0%E8%BF%87%E7%9A%84%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/cheems.gif">
-      <meta itemprop="name" content="WiseL00k">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WK的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/01/19/%E9%81%87%E5%88%B0%E8%BF%87%E7%9A%84%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">遇到过的问题及解决方法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2025-01-19 21:06:40 / 修改时间：21:12:17" itemprop="dateCreated datePublished" datetime="2025-01-19T21:06:40+08:00">2025-01-19</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="遇到过的问题及解决方法"><a href="#遇到过的问题及解决方法" class="headerlink" title="遇到过的问题及解决方法"></a>遇到过的问题及解决方法</h1>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2025/01/19/%E9%81%87%E5%88%B0%E8%BF%87%E7%9A%84%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wisel00k.site/2025/01/07/Win11%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/cheems.gif">
-      <meta itemprop="name" content="WiseL00k">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WK的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/01/07/Win11%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="post-title-link" itemprop="url">Win11常用快捷键</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2025-01-07 11:29:04" itemprop="dateCreated datePublished" datetime="2025-01-07T11:29:04+08:00">2025-01-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-01-09 00:51:24" itemprop="dateModified" datetime="2025-01-09T00:51:24+08:00">2025-01-09</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Win11常用快捷键"><a href="#Win11常用快捷键" class="headerlink" title="Win11常用快捷键"></a>Win11常用快捷键</h1><p><code>win+alt+b</code>开关HDR</p>
-<p><code>win+p</code>投影设置</p>
-<p><code>win+d</code>回到桌面</p>
-
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2025/01/07/Win11%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wisel00k.site/2025/01/07/MC%E4%B9%8C%E6%89%98%E9%82%A63-0%E6%95%B4%E5%90%88%E5%8C%85%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/cheems.gif">
-      <meta itemprop="name" content="WiseL00k">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WK的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/01/07/MC%E4%B9%8C%E6%89%98%E9%82%A63-0%E6%95%B4%E5%90%88%E5%8C%85%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">MC乌托邦3.0整合包安装教程</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2025-01-07 00:34:22" itemprop="dateCreated datePublished" datetime="2025-01-07T00:34:22+08:00">2025-01-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-01-09 00:50:29" itemprop="dateModified" datetime="2025-01-09T00:50:29+08:00">2025-01-09</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="MC乌托邦3-0整合包安装教程"><a href="#MC乌托邦3-0整合包安装教程" class="headerlink" title="MC乌托邦3.0整合包安装教程"></a>MC乌托邦3.0整合包安装教程</h1>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2025/01/07/MC%E4%B9%8C%E6%89%98%E9%82%A63-0%E6%95%B4%E5%90%88%E5%8C%85%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wisel00k.site/2025/01/06/VsCode%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/cheems.gif">
-      <meta itemprop="name" content="WiseL00k">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WK的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/01/06/VsCode%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="post-title-link" itemprop="url">VsCode常用快捷键</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2025-01-06 17:05:39" itemprop="dateCreated datePublished" datetime="2025-01-06T17:05:39+08:00">2025-01-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-01-07 01:03:18" itemprop="dateModified" datetime="2025-01-07T01:03:18+08:00">2025-01-07</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="VsCode常用快捷键"><a href="#VsCode常用快捷键" class="headerlink" title="VsCode常用快捷键"></a>VsCode常用快捷键</h1>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2025/01/06/VsCode%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wisel00k.site/2024/12/31/%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84C%E8%AF%AD%E8%A8%80%E8%8F%9C%E5%8D%95%E6%A1%86%E6%9E%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/cheems.gif">
-      <meta itemprop="name" content="WiseL00k">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WK的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/12/31/%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84C%E8%AF%AD%E8%A8%80%E8%8F%9C%E5%8D%95%E6%A1%86%E6%9E%B6/" class="post-title-link" itemprop="url">一个简单的C语言菜单框架</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-12-31 01:39:15" itemprop="dateCreated datePublished" datetime="2024-12-31T01:39:15+08:00">2024-12-31</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-01-07 01:03:08" itemprop="dateModified" datetime="2025-01-07T01:03:08+08:00">2025-01-07</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="一个简单的C语言菜单框架"><a href="#一个简单的C语言菜单框架" class="headerlink" title="一个简单的C语言菜单框架"></a>一个简单的C语言菜单框架</h1><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>做C语言课设总是用到菜单，发现菜单的使用频率特别高。想试着结合面向对象的思想尝试着写一个简单的C语言菜单框架。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/12/31/%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84C%E8%AF%AD%E8%A8%80%E8%8F%9C%E5%8D%95%E6%A1%86%E6%9E%B6/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wisel00k.site/2024/12/17/%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/cheems.gif">
-      <meta itemprop="name" content="WiseL00k">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WK的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/12/17/%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE/" class="post-title-link" itemprop="url">系统配置</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-12-17 23:56:28" itemprop="dateCreated datePublished" datetime="2024-12-17T23:56:28+08:00">2024-12-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-01-09 00:44:04" itemprop="dateModified" datetime="2025-01-09T00:44:04+08:00">2025-01-09</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>一些常用的工具配置，工具安装文档</p>
-<p>方便新环境迅速安装配置。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/12/17/%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wisel00k.site/2024/12/14/%E5%B0%8F%E5%B7%A5%E5%85%B7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/cheems.gif">
-      <meta itemprop="name" content="WiseL00k">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WK的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/12/14/%E5%B0%8F%E5%B7%A5%E5%85%B7/" class="post-title-link" itemprop="url">小工具</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2024-12-14 22:32:31 / 修改时间：22:42:27" itemprop="dateCreated datePublished" datetime="2024-12-14T22:32:31+08:00">2024-12-14</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="小工具分享"><a href="#小工具分享" class="headerlink" title="小工具分享"></a>小工具分享</h1><p>这里分享一些我觉得很好用的小工具，大部分都是开源的软件。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/12/14/%E5%B0%8F%E5%B7%A5%E5%85%B7/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wisel00k.site/2024/12/09/commit-message/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/cheems.gif">
-      <meta itemprop="name" content="WiseL00k">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WK的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/12/09/commit-message/" class="post-title-link" itemprop="url">Git commit信息规范</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2024-12-09 11:59:37 / 修改时间：18:33:57" itemprop="dateCreated datePublished" datetime="2024-12-09T11:59:37+08:00">2024-12-09</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Git-commit信息规范"><a href="#Git-commit信息规范" class="headerlink" title="Git commit信息规范"></a>Git commit信息规范</h1><p>在个人开发中，对于commit message(提交信息)，个人开发者往往比较随意，只要写的自己能看懂就行。但是养成良好的commit规范，也能够或多或少地提升自己的个人开发效率。也便于在出现bug时，方便回溯排查。</p>
-<p>但是在团队开发中，Commit message(提交信息)就显得尤为重要，一个好的commit message总是能够提升团队开发效率的。因此这里介绍一种常用的commit message规范–<a target="_blank" rel="noopener" href="https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit?tab=t.0#heading=h.greljkmo14y0">Angular规范</a>。如下图：</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/12/09/commit-message/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wisel00k.site/2024/12/06/DS-Anyview/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/cheems.gif">
-      <meta itemprop="name" content="WiseL00k">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WK的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/12/06/DS-Anyview/" class="post-title-link" itemprop="url">Anyview数据结构参考代码</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-12-06 22:32:25" itemprop="dateCreated datePublished" datetime="2024-12-06T22:32:25+08:00">2024-12-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-12-08 17:58:11" itemprop="dateModified" datetime="2024-12-08T17:58:11+08:00">2024-12-08</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Anyview数据结构参考代码"><a href="#Anyview数据结构参考代码" class="headerlink" title="Anyview数据结构参考代码"></a>Anyview数据结构参考代码</h1><h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p><img src="https://pic.imgdb.cn/item/67552805d0e0a243d4dfde21.png"></p>
-<p>可能会有些错误，仅供参考！！！</p>
-<p><del>请不要做CV工程师</del>，系统有查重！</p>
-<p>考虑到题库每年都可能更新，题目不一定完全一致。</p>
-<p>也欢迎大家PR，纠正更新题库。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/12/06/DS-Anyview/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
-
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
       }
     }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
 
-        </div>
-          
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
   
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
 
-  <aside class="sidebar">
-    <div class="sidebar-inner">
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
 
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="WiseL00k"
-      src="/images/cheems.gif">
-  <p class="site-author-name" itemprop="name">WiseL00k</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
         
-          <span class="site-state-item-count">12</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">12</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-        <a href="https://github.com/WiseL00k" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;WiseL00k" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
-      </span>
-  </div>
-
-
-
-      </div>
-
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'WK\'s Blog',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><link rel="stylesheet" href="/css/custom.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="/css/runtime/runtime.min.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(https://pic2.zhimg.com/v2-3caa4b1cd5c07cf69c1654f73063b681_r.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/cheems.gif" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">12</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 个人</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">WK's Blog</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 个人</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="site-info"><h1 id="site-title">WK's Blog</h1><div id="site_social_icons"><a class="social-icon" href="https://github.com/WiseL00k" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/6a165316.html" title="PCL2自定义皮肤教程">PCL2自定义皮肤教程</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-01-23T05:45:43.000Z" title="发表于 2025-01-23 13:45:43">2025-01-23</time></span></div><div class="content">PCL2自定义皮肤教程首先前往LittleSkin - 快速、可靠的 Minecraft 皮肤站 注册好账号 之后在用户中心，按如下操作  添加好新角色后，在我的衣柜，给角色添加皮肤材质。 之后在仪表盘处，将按钮拖到PCL2启动器处，真的就是拖过去  之后你的PCL2启动器，会变成这样  如果打开游戏后，在游戏内还是没能看到你设置的自定义皮肤。 可以在加一个Mod，在Mod下载处搜索万用皮肤补丁，根据你对应的游戏版本进行下载即可。  </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/2b45e8ee.html" title="遇到过的问题及解决方法">遇到过的问题及解决方法</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-01-19T13:06:40.000Z" title="发表于 2025-01-19 21:06:40">2025-01-19</time></span></div><div class="content">遇到过的问题及解决方法  问题：使用命令行pip安装python包的时候，会一直出现黄色Warning警告，关闭代理，解决。但是之后需要使用又要重新打开，比较麻烦。因此找到个不用关闭代理的方法。 解决方法：pip无法安装包，提示WARNING: Retrying…after connection broken by ‘ProxyError(‘Cannot connect to proxy.‘…_pip安装没反应-CSDN博客  原因：clash无法正确识别pip的http流量，导致流量没走代理。开启这个clash中自带的Specify Protocol工具，或者直接关闭代理都可以解决。 但是总是关闭代理又打开比较麻烦，比较推荐这个工具。 </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/16598fab.html" title="Win11常用快捷键">Win11常用快捷键</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-01-07T03:29:04.000Z" title="发表于 2025-01-07 11:29:04">2025-01-07</time></span></div><div class="content">Win11常用快捷键win+alt+b开关HDR win+p投影设置 win+d回到桌面 </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/51ab9a47.html" title="MC乌托邦3.0整合包安装教程">MC乌托邦3.0整合包安装教程</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-01-06T16:34:22.000Z" title="发表于 2025-01-07 00:34:22">2025-01-07</time></span></div><div class="content">MC乌托邦3.0整合包安装教程  下载下载PCL启动器到作者官网(PCL 最新正式版永久下载丨龙腾猫跃丨爱发电)，下载PCL启动器 下载整合包到作者官网，下载好乌托邦3.0整合包 留档如果找不到的话，我也打包好了需要的文件，通过这两条链接来下载 PCL下载 乌托邦3.0整合包 安装 创建一个新的文件夹，我这里叫PCL，将下载的这俩个文件拖到新的PCL文件夹里。 只解压带PCL字样的压缩包，之后打开解压后的程序，可以看到文件夹多出了几个文件夹，就是上图中最上面的两个文件夹，说明PCL启动器安装好了。 之后打开PCL启动器，同样是原来那个exe程序。打开后，按如下操作     等待下载完成即可  如果你的电脑还没配置过java环境的话，点击启动游戏后，应该会提示你下载java环境。 一般选自动配置即可。 之后启动游戏，便可以开启你的乌托邦之旅! </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/53b37f43.html" title="VsCode常用快捷键">VsCode常用快捷键</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-01-06T09:05:39.000Z" title="发表于 2025-01-06 17:05:39">2025-01-06</time></span></div><div class="content">VsCode常用快捷键  shitf+alt+方向键 复制当前行向方向键方向 </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/de47911f.html" title="一个简单的C语言菜单框架">一个简单的C语言菜单框架</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-12-30T17:39:15.000Z" title="发表于 2024-12-31 01:39:15">2024-12-31</time></span></div><div class="content">一个简单的C语言菜单框架引言做C语言课设总是用到菜单，发现菜单的使用频率特别高。想试着结合面向对象的思想尝试着写一个简单的C语言菜单框架。   数据结构一个菜单内的内容通常由多个菜单项和一些其他信息组成。而一个菜单项内又由菜单项的内容和选择后执行的回调函数组成。而菜单项执行的回调函数通常分为两种：一种是进入下一级菜单、另一种是执行对应功能函数。 因此做如下定义： 12345678910111213141516// 菜单typedef struct&#123;	&#125; Menu;// 菜单项typedef struct&#123;&#125; MenuItem;typedef struct&#123;&#125; MenuItemList;    可提供的接口如下： 12void registerMenu();void registerMenuItem();  待完工… </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/a03ae733.html" title="系统配置">系统配置</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-12-17T15:56:28.000Z" title="发表于 2024-12-17 23:56:28">2024-12-17</time></span></div><div class="content">介绍一些常用的工具配置，工具安装文档 方便新环境迅速安装配置。   操作系统LinuxVim安装推荐vimplus，可以帮我们一键自动安装常用的vim插件。  An automatic configuration program for vim安装vimplusgit clone https://github.com/chxuan/vimplus.git ~/.vimplus cd ~/.vimplus ./install.sh //不加sudo  设置Nerd Font为防止vimplus显示乱码，需设置linux终端字体为Droid Sans Mono Nerd Font。 多用户支持将vimplus在某个用户下安装好后，若需要在其他用户也能够使用vimplus，则执行 sudo ./install_to_user.sh username1 username2...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/1c0373de.html" title="小工具">小工具</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-12-14T14:32:31.000Z" title="发表于 2024-12-14 22:32:31">2024-12-14</time></span></div><div class="content">小工具分享这里分享一些我觉得很好用的小工具，大部分都是开源的软件。   WindowsuTools uTools真的是非常好用的集成工具，非常能够提升自己的办公效率，这款软件里面集成了许多常用小工具集合。 比如搜索神器：Everything，同时，它还支持OCR，翻译，批量文件重命名等常用功能。 官网下载链接:uTools官网 - 新一代效率工具平台 Everything 作为一款轻量化开源的文件检索软件，搜索速度拉爆Windows自带的检索文件功能。还支持自定义检索文件类型，用过都说好。 官网下载链接：Everything 未完待续… </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/afba152f.html" title="Git commit信息规范">Git commit信息规范</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-12-09T03:59:37.000Z" title="发表于 2024-12-09 11:59:37">2024-12-09</time></span></div><div class="content">Git commit信息规范在个人开发中，对于commit message(提交信息)，个人开发者往往比较随意，只要写的自己能看懂就行。但是养成良好的commit规范，也能够或多或少地提升自己的个人开发效率。也便于在出现bug时，方便回溯排查。 但是在团队开发中，Commit message(提交信息)就显得尤为重要，一个好的commit message总是能够提升团队开发效率的。因此这里介绍一种常用的commit message规范–Angular规范。如下图：    Angular规范Commit message 的格式每次提交，Commit message 都包括三个部分：header，body 和 footer。 12345&lt;type&gt;(&lt;scope&gt;): &lt;subject&gt;&lt;BLANK LINE&gt;&lt;body&gt;&lt;BLANK LINE&gt;&lt;footer&gt;  其中，header 是必需的，body 和 footer...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/524e8698.html" title="Anyview数据结构参考代码">Anyview数据结构参考代码</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-12-06T14:32:25.000Z" title="发表于 2024-12-06 22:32:25">2024-12-06</time></span></div><div class="content">Anyview数据结构参考代码说明 可能会有些错误，仅供参考！！！ 请不要做CV工程师，系统有查重！ 考虑到题库每年都可能更新，题目不一定完全一致。 也欢迎大家PR，纠正更新题库。  .github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}} 第1章DC01PE061234567891011121314151617181920212223#include...</div></div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/cheems.gif" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">WiseL00k</div><div class="author-info-description">个人博客</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">12</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/WiseL00k"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/WiseL00k" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Personal Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/6a165316.html" title="PCL2自定义皮肤教程">PCL2自定义皮肤教程</a><time datetime="2025-01-23T05:45:43.000Z" title="发表于 2025-01-23 13:45:43">2025-01-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/2b45e8ee.html" title="遇到过的问题及解决方法">遇到过的问题及解决方法</a><time datetime="2025-01-19T13:06:40.000Z" title="发表于 2025-01-19 21:06:40">2025-01-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/16598fab.html" title="Win11常用快捷键">Win11常用快捷键</a><time datetime="2025-01-07T03:29:04.000Z" title="发表于 2025-01-07 11:29:04">2025-01-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/51ab9a47.html" title="MC乌托邦3.0整合包安装教程">MC乌托邦3.0整合包安装教程</a><time datetime="2025-01-06T16:34:22.000Z" title="发表于 2025-01-07 00:34:22">2025-01-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/53b37f43.html" title="VsCode常用快捷键">VsCode常用快捷键</a><time datetime="2025-01-06T09:05:39.000Z" title="发表于 2025-01-06 17:05:39">2025-01-06</time></div></div></div></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/MC/" style="font-size: 1.5em; color: #99a9bf">MC</a> <a href="/tags/Git/" style="font-size: 1.1em; color: #999">Git</a> <a href="/tags/C/" style="font-size: 1.1em; color: #999">C</a> <a href="/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" style="font-size: 1.1em; color: #999">解决方法</a> <a href="/tags/Anyview/" style="font-size: 1.5em; color: #99a9bf">Anyview</a> <a href="/tags/windows/" style="font-size: 1.1em; color: #999">windows</a> <a href="/tags/%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE/" style="font-size: 1.1em; color: #999">系统配置</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" style="font-size: 1.1em; color: #999">程序设计</a> <a href="/tags/IDE/" style="font-size: 1.1em; color: #999">IDE</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 1.1em; color: #999">数据结构</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 1.1em; color: #999">工具</a> <a href="/tags/%E9%97%AE%E9%A2%98/" style="font-size: 1.5em; color: #99a9bf">问题</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      
     </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
   
-  &copy; 
-  <span itemprop="copyrightYear">2025</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">WiseL00k</span>
-</div>
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/01/">
+            <span class="card-archive-list-date">
+              一月 2025
+            </span>
+            <span class="card-archive-list-count">5</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/12/">
+            <span class="card-archive-list-date">
+              十二月 2024
+            </span>
+            <span class="card-archive-list-count">7</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">12</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-01-26T17:58:37.703Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By WiseL00k</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title=""><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title=""><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></p>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
 
-        
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa | fa-user"></i>
-      </span>
-      <span class="site-uv" title="总访客量">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
-    </span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa | fa-eye"></i>
-      </span>
-      <span class="site-pv" title="总访问量">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
-    </span>
-</div>
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
 
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
-
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-  <script defer src="/lib/three/three.min.js"></script>
-    <script defer src="/lib/three/three-waves.min.js"></script>
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-</body>
-</html>
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="/js/runtime/runtime.min.js"></script><!-- hexo injector body_end end --></body></html>
