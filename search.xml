@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>MCP &amp;&amp; Cline</title>
+      <link href="/posts/da8d2046.html"/>
+      <url>/posts/da8d2046.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="MCP-amp-amp-Cline"><a href="#MCP-amp-amp-Cline" class="headerlink" title="MCP &amp;&amp; Cline"></a>MCP &amp;&amp; Cline</h1><h2 id="MCP"><a href="#MCP" class="headerlink" title="MCP"></a>MCP</h2><p>MCP全名（Model Context Protocol，模型上下文协议），其定义了应用程序和 AI 模型之间交换上下文信息的方式。这使得开发者能够<strong>以一致的方式将各种数据源、工具和功能连接到 AI 模型</strong>（一个中间协议层），就像 USB-C 让不同设备能够通过相同的接口连接一样。MCP 的目标是创建一个通用标准，使 AI 应用程序的开发和集成变得更加简单和统一。</p><p>以往使用LLM大模型，都是用户输入文本，模型输出文本。得到的结果都是文本内容，用户需要自行理解后再对软件进行操作进而得到想到的结果。讲大白话就是：<strong>让AI不再只输出干巴巴的文本内容，而是直接通过输出的文本内容自动操作你的软件，得到你想要的结果。</strong></p><p><img src="https://pic4.zhimg.com/v2-3a242914e1f4958e631dd158e043b7c3_r.jpg" alt=""></p><p><img src="https://picx.zhimg.com/v2-9fe7fb51f264338a079a444eefa041b1_1440w.jpg" alt=""></p><p><a href="https://zhuanlan.zhihu.com/p/29001189476">MCP (Model Context Protocol)，一篇就够了。 - 知乎</a></p><h2 id="Cline"><a href="#Cline" class="headerlink" title="Cline"></a>Cline</h2><p>Cline官网 <a href="https://cline.bot/">Cline - AI Autonomous Coding Agent for VS Code</a></p><h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><h4 id="一些集成指南"><a href="#一些集成指南" class="headerlink" title="一些集成指南"></a>一些集成指南</h4><p><a href="https://blog.csdn.net/weixin_46074689/article/details/144619607">MCP技术与Cline集成指南：打造智能AI助手的数据连接解决方案_vscode mcp-CSDN博客</a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Ubuntu20.04及ROS开发相关配置</title>
       <link href="/posts/86654e9a.html"/>
       <url>/posts/86654e9a.html</url>
