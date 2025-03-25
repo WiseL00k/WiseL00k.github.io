@@ -4,6 +4,44 @@
   
     
     <entry>
+      <title>计算机网络</title>
+      <link href="/posts/e255a10a.html"/>
+      <url>/posts/e255a10a.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="套接字"><a href="#套接字" class="headerlink" title="套接字"></a>套接字</h2><p>套接字（Socket）是计算机网络中用于 <strong>实现设备间通信的编程接口</strong>，可以理解为网络数据传输的“端点”。它是操作系统提供的底层工具，允许不同设备（或同一设备上的不同程序）通过 <strong>IP地址 + 端口号</strong> 的组合进行数据交换。</p><h4 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a><strong>核心概念</strong></h4><ol><li><strong>通信端点</strong><ul><li>每个套接字对应一个唯一的网络地址（IP + 端口），例如： <code>192.168.1.100:8080</code>（本机IP + Web服务端口） <code>104.18.21.34:443</code>（远程服务器IP + HTTPS端口）</li></ul></li><li><strong>协议支持</strong><ul><li>支持多种网络协议：<ul><li><strong>TCP（传输控制协议）</strong>：面向连接，数据可靠传输（如网页浏览）。</li><li><strong>UDP（用户数据报协议）</strong>：无连接，速度快但不可靠（如视频直播）。</li><li><strong>原始套接字（Raw Socket）</strong>：直接处理底层协议（如ICMP、自定义协议）。</li></ul></li></ul></li><li><strong>跨平台性</strong><ul><li>不同操作系统实现类似接口（如Windows的Winsock、Linux的BSD Socket）。</li></ul></li></ol><h4 id="核心功能"><a href="#核心功能" class="headerlink" title="核心功能"></a><strong>核心功能</strong></h4><ol><li><strong>建立连接</strong><ul><li><strong>TCP</strong>：通过三次握手建立连接（客户端-服务器模型）。</li><li><strong>UDP</strong>：无需预先连接，直接发送数据。</li></ul></li><li><strong>数据传输</strong><ul><li>发送数据：<code>send()</code>（TCP）或 <code>sendto()</code>（UDP）。</li><li>接收数据：<code>recv()</code>（TCP）或 <code>recvfrom()</code>（UDP）。</li></ul></li><li><strong>地址绑定</strong><ul><li>服务器通过 <code>bind()</code> 绑定IP和端口，监听客户端请求（如Web服务器监听80端口）。</li></ul></li></ol><h3 id="原始套接字"><a href="#原始套接字" class="headerlink" title="原始套接字"></a>原始套接字</h3><h3 id="标准套接字"><a href="#标准套接字" class="headerlink" title="标准套接字"></a>标准套接字</h3>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>CMake</title>
+      <link href="/posts/42cbd3c8.html"/>
+      <url>/posts/42cbd3c8.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="CMake"><a href="#CMake" class="headerlink" title="CMake"></a>CMake</h1><p><a href="https://blog.csdn.net/weixin_43717839/article/details/128032486?ops_request_misc=%7B%22request%5Fid%22%3A%22666f2945f36a2ff87ed6fabad6ee5ea0%22%2C%22scm%22%3A%2220140713.130102334..%22%7D&amp;request_id=666f2945f36a2ff87ed6fabad6ee5ea0&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-128032486-null-null.142^v102^control&amp;utm_term=cmake&amp;spm=1018.2226.3001.4187">【C++】Cmake使用教程（看这一篇就够了）-CSDN博客</a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>MCP &amp;&amp; Cline</title>
       <link href="/posts/da8d2046.html"/>
       <url>/posts/da8d2046.html</url>
@@ -164,7 +202,7 @@
       <link href="/posts/a03ae733.html"/>
       <url>/posts/a03ae733.html</url>
       
-        <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>一些常用的工具配置，工具安装文档</p><p>方便新环境迅速安装配置。</p><span id="more"></span><h1 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h1><h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><h3 id="Vim安装"><a href="#Vim安装" class="headerlink" title="Vim安装"></a>Vim安装</h3><p>推荐<a href="https://github.com/WiseL00k/vimplus">vimplus</a>，可以帮我们一键自动安装常用的vim插件。</p><p><img src="https://raw.githubusercontent.com/chxuan/vimplus/master/screenshots/vimplus-logo.png" alt="vimplus"></p><h4 id="An-automatic-configuration-program-for-vim"><a href="#An-automatic-configuration-program-for-vim" class="headerlink" title="An automatic configuration program for vim"></a>An automatic configuration program for vim</h4><h4 id="安装vimplus"><a href="#安装vimplus" class="headerlink" title="安装vimplus"></a>安装vimplus</h4><pre><code>git clone https://github.com/chxuan/vimplus.git ~/.vimpluscd ~/.vimplus./install.sh //不加sudo</code></pre><h4 id="设置Nerd-Font"><a href="#设置Nerd-Font" class="headerlink" title="设置Nerd Font"></a>设置Nerd Font</h4><p>为防止vimplus显示乱码，需设置linux终端字体为 <code>Droid Sans Mono Nerd Font</code>。</p><h4 id="多用户支持"><a href="#多用户支持" class="headerlink" title="多用户支持"></a>多用户支持</h4><p>将vimplus在某个用户下安装好后，若需要在其他用户也能够使用vimplus，则执行</p><pre><code>sudo ./install_to_user.sh username1 username2 //替换为真实用户名</code></pre><h4 id="更新vimplus"><a href="#更新vimplus" class="headerlink" title="更新vimplus"></a>更新vimplus</h4><p>紧跟vimplus的步伐，尝鲜新特性</p><pre><code>./update.sh</code></pre><h4 id="自定义"><a href="#自定义" class="headerlink" title="自定义"></a>自定义</h4><blockquote><ul><li>[~/.vimrc][82]为vimplus的默认配置，一般不做修改</li><li>[~/.vimrc.custom.plugins][83]为用户自定义插件列表，用户增加、卸载插件请修改该文件</li><li>[~/.vimrc.custom.config][84]为用户自定义配置文件，一般性配置请放入该文件，可覆盖[~/.vimrc][82]里的配置</li></ul></blockquote><h3 id="ZSH安装"><a href="#ZSH安装" class="headerlink" title="ZSH安装"></a>ZSH安装</h3><h3 id="Thefuck"><a href="#Thefuck" class="headerlink" title="Thefuck"></a>Thefuck</h3><p>一款自动纠错终端工具</p><p><a href="https://github.com/nvbn/thefuck">nvbn/thefuck: Magnificent app which corrects your previous console command.</a></p><h3 id="tldr"><a href="#tldr" class="headerlink" title="tldr"></a>tldr</h3><p>方便快捷查询命令常用用法</p><p><a href="https://github.com/tldr-pages/tldr">tldr-pages/tldr: 📚 Collaborative cheatsheets for console commands</a></p><h3 id="fd"><a href="#fd" class="headerlink" title="fd"></a>fd</h3><p>一款替代find命令的工具</p><p><a href="https://github.com/sharkdp/fd">sharkdp/fd: A simple, fast and user-friendly alternative to &#39;find&#39;</a></p>]]></content>
+        <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>一些常用的工具配置，工具安装文档</p><p>方便新环境迅速安装配置。</p><span id="more"></span><h1 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h1><h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><h3 id="Vim安装"><a href="#Vim安装" class="headerlink" title="Vim安装"></a>Vim安装</h3><p>推荐<a href="https://github.com/WiseL00k/vimplus">vimplus</a>，可以帮我们一键自动安装常用的vim插件。</p><p><img src="https://raw.githubusercontent.com/chxuan/vimplus/master/screenshots/vimplus-logo.png" alt="vimplus"></p><h4 id="An-automatic-configuration-program-for-vim"><a href="#An-automatic-configuration-program-for-vim" class="headerlink" title="An automatic configuration program for vim"></a>An automatic configuration program for vim</h4><h4 id="安装vimplus"><a href="#安装vimplus" class="headerlink" title="安装vimplus"></a>安装vimplus</h4><pre><code>git clone https://github.com/chxuan/vimplus.git ~/.vimpluscd ~/.vimplus./install.sh //不加sudo</code></pre><h4 id="设置Nerd-Font"><a href="#设置Nerd-Font" class="headerlink" title="设置Nerd Font"></a>设置Nerd Font</h4><p>为防止vimplus显示乱码，需设置linux终端字体为 <code>Droid Sans Mono Nerd Font</code>。</p><h4 id="多用户支持"><a href="#多用户支持" class="headerlink" title="多用户支持"></a>多用户支持</h4><p>将vimplus在某个用户下安装好后，若需要在其他用户也能够使用vimplus，则执行</p><pre><code>sudo ./install_to_user.sh username1 username2 //替换为真实用户名</code></pre><h4 id="更新vimplus"><a href="#更新vimplus" class="headerlink" title="更新vimplus"></a>更新vimplus</h4><p>紧跟vimplus的步伐，尝鲜新特性</p><pre><code>./update.sh</code></pre><h4 id="自定义"><a href="#自定义" class="headerlink" title="自定义"></a>自定义</h4><blockquote><ul><li>[~/.vimrc][82]为vimplus的默认配置，一般不做修改</li><li>[~/.vimrc.custom.plugins][83]为用户自定义插件列表，用户增加、卸载插件请修改该文件</li><li>[~/.vimrc.custom.config][84]为用户自定义配置文件，一般性配置请放入该文件，可覆盖[~/.vimrc][82]里的配置</li></ul></blockquote><h3 id="ZSH安装"><a href="#ZSH安装" class="headerlink" title="ZSH安装"></a>ZSH安装</h3><h3 id="Thefuck"><a href="#Thefuck" class="headerlink" title="Thefuck"></a>Thefuck</h3><p>一款自动纠错终端工具</p><p><a href="https://github.com/nvbn/thefuck">nvbn/thefuck: Magnificent app which corrects your previous console command.</a></p><h3 id="tldr"><a href="#tldr" class="headerlink" title="tldr"></a>tldr</h3><p>方便快捷查询命令常用用法</p><p><a href="https://github.com/tldr-pages/tldr">tldr-pages/tldr: 📚 Collaborative cheatsheets for console commands</a></p><h3 id="fd"><a href="#fd" class="headerlink" title="fd"></a>fd</h3><p>一款替代find命令的工具</p><p><a href="https://github.com/sharkdp/fd">sharkdp/fd: A simple, fast and user-friendly alternative to &#39;find&#39;</a></p><h3 id="lazyvim"><a href="#lazyvim" class="headerlink" title="lazyvim"></a>lazyvim</h3><p><a href="https://blog.csdn.net/m0_60670525/article/details/136329707">如何在Ubuntu上安装最新版本的Neovim并快速配置_ubuntu安装neovim-CSDN博客</a></p><p><a href="https://www.lazyvim.org/">🚀 Getting Started | LazyVim</a></p>]]></content>
       
       
       
