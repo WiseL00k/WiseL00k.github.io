@@ -1,0 +1,342 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>myOS | WK's Blog</title><meta name="author" content="WiseL00k"><meta name="copyright" content="WiseL00k"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="自制操作系统学习过程关于一个程序的组成 这张图片形象展示了一个程序是如何在代码中分布的 1.栈区 栈区由编译器自动分配释放，由操作系统自动管理，无须手动管理。 栈区上的内容只在函数范围内存在，当函数运行结束，这些内容也会自动被销毁。 栈区按内存地址由高到低方向生长，其最大大小由编译时确定，速度快，但自由性差，最大空间不大。 栈区是先进后出原则，即先进去的被堵在屋里的最里面，后进去的在门口，释放的时">
+<meta property="og:type" content="article">
+<meta property="og:title" content="myOS">
+<meta property="og:url" content="https://wisel00k.site/posts/36abf099.html">
+<meta property="og:site_name" content="WK&#39;s Blog">
+<meta property="og:description" content="自制操作系统学习过程关于一个程序的组成 这张图片形象展示了一个程序是如何在代码中分布的 1.栈区 栈区由编译器自动分配释放，由操作系统自动管理，无须手动管理。 栈区上的内容只在函数范围内存在，当函数运行结束，这些内容也会自动被销毁。 栈区按内存地址由高到低方向生长，其最大大小由编译时确定，速度快，但自由性差，最大空间不大。 栈区是先进后出原则，即先进去的被堵在屋里的最里面，后进去的在门口，释放的时">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://wisel00k.site/img/cheems.gif">
+<meta property="article:published_time" content="2025-04-12T08:45:17.000Z">
+<meta property="article:modified_time" content="2025-04-12T12:59:41.355Z">
+<meta property="article:author" content="WiseL00k">
+<meta property="article:tag" content="操作系统">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wisel00k.site/img/cheems.gif"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "myOS",
+  "url": "https://wisel00k.site/posts/36abf099.html",
+  "image": "https://wisel00k.site/img/cheems.gif",
+  "datePublished": "2025-04-12T08:45:17.000Z",
+  "dateModified": "2025-04-12T12:59:41.355Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "WiseL00k",
+      "url": "https://wisel00k.site/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/WK.ico"><link rel="canonical" href="https://wisel00k.site/posts/36abf099.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200,"highlightFullpage":true,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'myOS',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><script src="https://cdn.staticfile.org/jquery/3.6.3/jquery.min.js"></script><script async data-pjax src="/js/txmap.js"></script><link rel="stylesheet" href="/css/custom.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/animate.min.css" media="print" onload="this.media='screen'"><link rel="stylesheet" href="https://unpkg.zhimg.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img"></div><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (false) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+btf.addGlobalFn('pjaxSend', () => {
+  Pace.restart()
+}, 'pace_restart')
+
+</script><link rel="stylesheet" href="/css/pace/loading-bar.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js/pace.min.js"></script><div id="web_bg" style="background-image: url(https://pic2.zhimg.com/v2-3caa4b1cd5c07cf69c1654f73063b681_r.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/cheems.gif" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 个人</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope"></i><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">WK's Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">myOS</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 个人</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">myOS</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-04-12T08:45:17.000Z" title="发表于 2025-04-12 16:45:17">2025-04-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-04-12T12:59:41.355Z" title="更新于 2025-04-12 20:59:41">2025-04-12</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/posts/36abf099.html#post-comment"><span id="twikoo-count"><i class="fa-solid fa-spinner fa-spin"></i></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="自制操作系统"><a href="#自制操作系统" class="headerlink" title="自制操作系统"></a>自制操作系统</h1><h2 id="学习过程"><a href="#学习过程" class="headerlink" title="学习过程"></a>学习过程</h2><h4 id="关于一个程序的组成"><a href="#关于一个程序的组成" class="headerlink" title="关于一个程序的组成"></a>关于一个程序的组成</h4><p><img src="https://i-blog.csdnimg.cn/blog_migrate/73a96d54c02c919cf7d4823a152356c2.png" alt=""></p>
+<p>这张图片形象展示了一个程序是如何在代码中分布的</p>
+<h4 id="1-栈区"><a href="#1-栈区" class="headerlink" title="1.栈区"></a><strong>1.栈区</strong></h4><ul>
+<li>栈区由编译器自动分配释放，由操作系统自动管理，无须手动管理。</li>
+<li>栈区上的内容只在函数范围内存在，当函数运行结束，这些内容也会自动被销毁。</li>
+<li>栈区按内存地址由高到低方向生长，其最大大小由编译时确定，速度快，但自由性差，最大空间不大。</li>
+<li>栈区是先进后出原则，即先进去的被堵在屋里的最里面，后进去的在门口，释放的时候门口的先出去。</li>
+</ul>
+<p><strong>存放内容：</strong>临时创建的局部变量和const定义的局部变量存放在栈区。<br>函数调用和返回时，其入口参数和返回值存放在栈区。</p>
+<h4 id="2-堆区"><a href="#2-堆区" class="headerlink" title="2.堆区"></a>2.堆区</h4><p>堆区由程序员分配内存和释放。<br>堆区按内存地址由低到高方向生长，其大小由系统内存/虚拟内存上限决定，速度较慢，但自由性大，可用空间大。</p>
+<p><strong>这里可能还会有内存映射段，用于动态链接库/文件映射</strong></p>
+<h4 id="3-全局-静态-区"><a href="#3-全局-静态-区" class="headerlink" title="3.全局(静态)区"></a>3.全局(静态)区</h4><h5 id="全局-静态-区介绍"><a href="#全局-静态-区介绍" class="headerlink" title="全局(静态)区介绍"></a>全局(静态)区介绍</h5><p>通常是用于那些在编译期间就能确定存储大小的变量的存储区，但它用于的是在整个程序运行期间都可见的全局变量和静态变量。<br>全局区有 .bss段 和 .data段组成，可读可写。</p>
+<h5 id="BSS段"><a href="#BSS段" class="headerlink" title="BSS段"></a>BSS段</h5><p>BSS段（Block Started by Symbol segment）是计算机程序内存布局中的一个重要组成部分，主要用于存储程序中未初始化的全局变量和静态变量。它位于数据段（.data段）之后，堆（heap）段之前</p>
+<p>未初始化的全局变量和未初始化的静态变量存放在.bss段。<br>初始化为0的全局变量和初始化为0的静态变量存放在.bss段。<br>.bss段不占用可执行文件空间，其内容由操作系统初始化。</p>
+<p>BSS段的主要特点是：</p>
+<ol>
+<li><strong>存储内容：</strong>专门用于存放程序中未初始化的全局变量和静态变量</li>
+<li><strong>初始化特性：</strong>在程序加载到内存时会被系统自动清零（初始化为0或空指针）</li>
+<li><strong>空间效率</strong>：在可执行文件中不占用实际存储空间，只记录所需空间大小</li>
+</ol>
+<p>BSS段在计算机系统中发挥着重要作用，具有多项优势：</p>
+<ol>
+<li><strong>内存效率</strong>：通过只记录未初始化变量所需空间大小而不实际存储零值，显著减小可执行文件体积 <ul>
+<li>例如：一个包含<code>int ar[30000];</code>的程序，编译后文件比初始化版本<code>int ar[300000] = &#123;1, 2, 3...&#125;</code></li>
+</ul>
+</li>
+<li><strong>运行效率</strong>：操作系统可批量清零BSS段，比单独初始化每个变量更高效 </li>
+<li><strong>编程便利</strong>：程序员无需显式初始化全局/静态变量为零，简化代码编写 </li>
+<li><strong>嵌入式系统优势</strong>：在资源受限的嵌入式环境中，BSS段能有效节省宝贵的内存空间</li>
+</ol>
+<h5 id="data段"><a href="#data段" class="headerlink" title=".data段"></a>.data段</h5><p>已初始化的全局变量存放在.data段。<br>已初始化的静态变量存放在.data段。<br>.data段占用可执行文件空间，其内容有程序初始化。</p>
+<h4 id="4-常量区"><a href="#4-常量区" class="headerlink" title="4. 常量区"></a>4. 常量区</h4><ul>
+<li><strong>字符串</strong>、<strong>数字</strong>等常量存放在常量区。</li>
+<li><strong>const修饰的全局变量</strong>存放在常量区。</li>
+<li>程序运行期间，<strong>常量</strong>区的内容不可以被修改。</li>
+</ul>
+<h4 id="5-代码区"><a href="#5-代码区" class="headerlink" title="5.代码区"></a>5.代码区</h4><ul>
+<li>程序执行代码存放在代码区，其值不能修改（若修改则会出现错误）。</li>
+<li>字符串常量和define定义的常量也有可能存放在代码区。</li>
+</ul>
+<h4 id="操作系统的启动流程"><a href="#操作系统的启动流程" class="headerlink" title="操作系统的启动流程"></a>操作系统的启动流程</h4><p><img src="https://ask.qcloudimg.com/http-save/yehe-1668979/pzv80fmxgr.jpeg" alt=""></p>
+<ul>
+<li>BIOS(Basic Input/Output System)，基本输入输出系统，该系统存储于主板的ROM芯片上，计算机在开机时，会最先读取该系统，然后会有一个加电自检过程，这个过程其实就是检查CPU和内存，计算机最基本的组成单元(控制器、运算器和存储器)，还会检查其他硬件，若没有异常就开始加载BIOS程序到内存当中。详细的BIOS功能，这边就不说了，BIOS主要的一个功能就是存储了磁盘的启动顺序，BIOS会按照启动顺序去查找第一个磁盘头的MBR信息，并加载和执行MBR中的Bootloader程序，若第一个磁盘不存在MBR，则会继续查找第二个磁盘(PS：启动顺序可以在BIOS的界面中进行设置)，一旦BootLoader程序被检测并加载内存中，BIOS就将控制权交接给了BootLoader程序。 </li>
+<li>MBR(Master Boot Record)，主引导记录，MBR存储于磁盘的头部，大小为512bytes，其中，446bytes用于存储BootLoader程序，64bytes用于存储分区表信息，最后2bytes用于MBR的有效性检查。 </li>
+<li>GRUB(Grand Unified Bootloader)，多系统启动程序，其执行过程可分为三个步骤： <ul>
+<li>Stage1：这个其实就是MBR，它的主要工作就是查找并加载第二段Bootloader程序(stage2)，但系统在没启动时，MBR根本找不到文件系统，也就找不到stage2所存放的位置，因此，就有了stage1_5</li>
+<li>Stage1_5：该步骤就是为了识别文件系统</li>
+<li>Stage2：GRUB程序会根据/boot/grub/grub.conf文件查找Kernel的信息，然后开始加载Kernel程序，当Kernel程序被检测并在加载到内存中，GRUB就将控制权交接给了Kernel程序。</li>
+</ul>
+</li>
+</ul>
+<p><strong>注意！现代操作系统使用了UEFI启动，但是我们现在不说UEFI，请自行忽略</strong></p>
+<p>但是这样也需要我们的Boot程序按照<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FMulti-booting&amp;objectId=1414532&amp;objectType=1&amp;isNewArticle=undefined">Mutileboot</a> 规范来编译内核，才可以被GRUB引导。 按照Mutileboot规范，内核必须在起始的8KB中的(512字节)包含这一个多引导项头（Multiboot header)。 <strong>而且，这个多引导项头里面必须有3个4字节对齐的块。</strong></p>
+<h4 id="一些指令"><a href="#一些指令" class="headerlink" title="一些指令"></a>一些指令</h4><p><code>clt</code>，表示clear interrupt，关闭所有硬件中断</p>
+<p><code>hlt</code> ，表示停止CPU运行，即HALT</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/MQ0522/article/details/114823770">C语言：内存分配—-栈区、堆区、全局区、常量区和代码区_c 内存布局-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1414532">VV的操作系统笔记（一）操作系统I SeeYou!!!! -腾讯云开发者社区-腾讯云</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://wisel00k.site">WiseL00k</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://wisel00k.site/posts/36abf099.html">https://wisel00k.site/posts/36abf099.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://wisel00k.site" target="_blank">WK's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></div><div class="post-share"><div class="social-share" data-image="/img/cheems.gif" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/cheems.gif" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">WiseL00k</div><div class="author-info-description">个人博客</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/WiseL00k"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/WiseL00k" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">最新域名: wisel00k.site</div><div id="welcome-info"></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%87%AA%E5%88%B6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.</span> <span class="toc-text">自制操作系统</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E8%BF%87%E7%A8%8B"><span class="toc-number">1.1.</span> <span class="toc-text">学习过程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%BB%84%E6%88%90"><span class="toc-number">1.1.0.1.</span> <span class="toc-text">关于一个程序的组成</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%A0%88%E5%8C%BA"><span class="toc-number">1.1.0.2.</span> <span class="toc-text">1.栈区</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%A0%86%E5%8C%BA"><span class="toc-number">1.1.0.3.</span> <span class="toc-text">2.堆区</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%85%A8%E5%B1%80-%E9%9D%99%E6%80%81-%E5%8C%BA"><span class="toc-number">1.1.0.4.</span> <span class="toc-text">3.全局(静态)区</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%A8%E5%B1%80-%E9%9D%99%E6%80%81-%E5%8C%BA%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.1.0.4.1.</span> <span class="toc-text">全局(静态)区介绍</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#BSS%E6%AE%B5"><span class="toc-number">1.1.0.4.2.</span> <span class="toc-text">BSS段</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#data%E6%AE%B5"><span class="toc-number">1.1.0.4.3.</span> <span class="toc-text">.data段</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%B8%B8%E9%87%8F%E5%8C%BA"><span class="toc-number">1.1.0.5.</span> <span class="toc-text">4. 常量区</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E4%BB%A3%E7%A0%81%E5%8C%BA"><span class="toc-number">1.1.0.6.</span> <span class="toc-text">5.代码区</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B"><span class="toc-number">1.1.0.7.</span> <span class="toc-text">操作系统的启动流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E6%8C%87%E4%BB%A4"><span class="toc-number">1.1.0.8.</span> <span class="toc-text">一些指令</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">1.2.</span> <span class="toc-text">参考资料</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/36abf099.html" title="myOS">myOS</a><time datetime="2025-04-12T08:45:17.000Z" title="发表于 2025-04-12 16:45:17">2025-04-12</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/5971328.html" title="软路由教程">软路由教程</a><time datetime="2025-04-02T14:06:36.000Z" title="发表于 2025-04-02 22:06:36">2025-04-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/b7a55cc3.html" title="广工计组实验"><img src="https://th.bing.com/th/id/R.b1704e4a87862f6202350527b41551a9?rik=FFrdNP3m1hEK0Q&amp;riu=http%3a%2f%2fwww.idc59.com%2fwp-content%2fuploads%2f2023%2f03%2f1679191027_64166bf34a266.jpg&amp;ehk=r6Jzby8GNvA274BO720XbpHNDc%2fQil7SZ7sJndtlgMk%3d&amp;risl=&amp;pid=ImgRaw&amp;r=0" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="广工计组实验"/></a><div class="content"><a class="title" href="/posts/b7a55cc3.html" title="广工计组实验">广工计组实验</a><time datetime="2025-03-25T03:57:08.000Z" title="发表于 2025-03-25 11:57:08">2025-03-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/e255a10a.html" title="计算机网络">计算机网络</a><time datetime="2025-03-16T03:36:35.000Z" title="发表于 2025-03-16 11:36:35">2025-03-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/42cbd3c8.html" title="CMake">CMake</a><time datetime="2025-03-15T12:15:06.000Z" title="发表于 2025-03-15 20:15:06">2025-03-15</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By WiseL00k</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.twikoo.wisel00k.site/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const init = (el = document, path = location.pathname) => {
+    twikoo.init({
+      el: el.querySelector('#twikoo-wrap'),
+      envId: 'https://twikoo.twikoo.wisel00k.site/',
+      region: '',
+      onCommentLoaded: () => {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      },
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || path
+    })
+
+    GLOBAL_CONFIG_SITE.pageType === 'post' && getCount()
+
+    isShuoshuo && (window.shuoshuoComment.destroyTwikoo = () => {
+      if (el.children.length) {
+        el.innerHTML = ''
+        el.classList.add('no-comment')
+      }
+    })
+  }
+
+  const loadTwikoo = (el, path) => {
+    if (typeof twikoo === 'object') setTimeout(() => init(el, path), 0)
+    else btf.getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(() => init(el, path))
+  }
+
+  if (isShuoshuo) {
+    'Twikoo' === 'Twikoo'
+      ? window.shuoshuoComment = { loadComment: loadTwikoo }
+      : window.loadOtherComment = loadTwikoo
+    return
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start --><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '300ms');
+    arr[i].setAttribute('data-wow-delay', '0s');
+    arr[i].setAttribute('data-wow-offset', '100');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script></div><script defer src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow.min.js"></script><script defer src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow_init.js"></script><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title=""><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title=""><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></p>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="/js/runtime/runtime.min.js"></script><script async src="/js/ali_font.js"></script><!-- hexo injector body_end end --></body></html>

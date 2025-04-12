@@ -4,6 +4,59 @@
   
     
     <entry>
+      <title>myOS</title>
+      <link href="/posts/36abf099.html"/>
+      <url>/posts/36abf099.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="自制操作系统"><a href="#自制操作系统" class="headerlink" title="自制操作系统"></a>自制操作系统</h1><h2 id="学习过程"><a href="#学习过程" class="headerlink" title="学习过程"></a>学习过程</h2><h4 id="关于一个程序的组成"><a href="#关于一个程序的组成" class="headerlink" title="关于一个程序的组成"></a>关于一个程序的组成</h4><p><img src="https://i-blog.csdnimg.cn/blog_migrate/73a96d54c02c919cf7d4823a152356c2.png" alt=""></p><p>这张图片形象展示了一个程序是如何在代码中分布的</p><h4 id="1-栈区"><a href="#1-栈区" class="headerlink" title="1.栈区"></a><strong>1.栈区</strong></h4><ul><li>栈区由编译器自动分配释放，由操作系统自动管理，无须手动管理。</li><li>栈区上的内容只在函数范围内存在，当函数运行结束，这些内容也会自动被销毁。</li><li>栈区按内存地址由高到低方向生长，其最大大小由编译时确定，速度快，但自由性差，最大空间不大。</li><li>栈区是先进后出原则，即先进去的被堵在屋里的最里面，后进去的在门口，释放的时候门口的先出去。</li></ul><p><strong>存放内容：</strong>临时创建的局部变量和const定义的局部变量存放在栈区。<br>函数调用和返回时，其入口参数和返回值存放在栈区。</p><h4 id="2-堆区"><a href="#2-堆区" class="headerlink" title="2.堆区"></a>2.堆区</h4><p>堆区由程序员分配内存和释放。<br>堆区按内存地址由低到高方向生长，其大小由系统内存/虚拟内存上限决定，速度较慢，但自由性大，可用空间大。</p><p><strong>这里可能还会有内存映射段，用于动态链接库/文件映射</strong></p><h4 id="3-全局-静态-区"><a href="#3-全局-静态-区" class="headerlink" title="3.全局(静态)区"></a>3.全局(静态)区</h4><h5 id="全局-静态-区介绍"><a href="#全局-静态-区介绍" class="headerlink" title="全局(静态)区介绍"></a>全局(静态)区介绍</h5><p>通常是用于那些在编译期间就能确定存储大小的变量的存储区，但它用于的是在整个程序运行期间都可见的全局变量和静态变量。<br>全局区有 .bss段 和 .data段组成，可读可写。</p><h5 id="BSS段"><a href="#BSS段" class="headerlink" title="BSS段"></a>BSS段</h5><p>BSS段（Block Started by Symbol segment）是计算机程序内存布局中的一个重要组成部分，主要用于存储程序中未初始化的全局变量和静态变量。它位于数据段（.data段）之后，堆（heap）段之前</p><p>未初始化的全局变量和未初始化的静态变量存放在.bss段。<br>初始化为0的全局变量和初始化为0的静态变量存放在.bss段。<br>.bss段不占用可执行文件空间，其内容由操作系统初始化。</p><p>BSS段的主要特点是：</p><ol><li><strong>存储内容：</strong>专门用于存放程序中未初始化的全局变量和静态变量</li><li><strong>初始化特性：</strong>在程序加载到内存时会被系统自动清零（初始化为0或空指针）</li><li><strong>空间效率</strong>：在可执行文件中不占用实际存储空间，只记录所需空间大小</li></ol><p>BSS段在计算机系统中发挥着重要作用，具有多项优势：</p><ol><li><strong>内存效率</strong>：通过只记录未初始化变量所需空间大小而不实际存储零值，显著减小可执行文件体积 <ul><li>例如：一个包含<code>int ar[30000];</code>的程序，编译后文件比初始化版本<code>int ar[300000] = &#123;1, 2, 3...&#125;</code></li></ul></li><li><strong>运行效率</strong>：操作系统可批量清零BSS段，比单独初始化每个变量更高效 </li><li><strong>编程便利</strong>：程序员无需显式初始化全局/静态变量为零，简化代码编写 </li><li><strong>嵌入式系统优势</strong>：在资源受限的嵌入式环境中，BSS段能有效节省宝贵的内存空间</li></ol><h5 id="data段"><a href="#data段" class="headerlink" title=".data段"></a>.data段</h5><p>已初始化的全局变量存放在.data段。<br>已初始化的静态变量存放在.data段。<br>.data段占用可执行文件空间，其内容有程序初始化。</p><h4 id="4-常量区"><a href="#4-常量区" class="headerlink" title="4. 常量区"></a>4. 常量区</h4><ul><li><strong>字符串</strong>、<strong>数字</strong>等常量存放在常量区。</li><li><strong>const修饰的全局变量</strong>存放在常量区。</li><li>程序运行期间，<strong>常量</strong>区的内容不可以被修改。</li></ul><h4 id="5-代码区"><a href="#5-代码区" class="headerlink" title="5.代码区"></a>5.代码区</h4><ul><li>程序执行代码存放在代码区，其值不能修改（若修改则会出现错误）。</li><li>字符串常量和define定义的常量也有可能存放在代码区。</li></ul><h4 id="操作系统的启动流程"><a href="#操作系统的启动流程" class="headerlink" title="操作系统的启动流程"></a>操作系统的启动流程</h4><p><img src="https://ask.qcloudimg.com/http-save/yehe-1668979/pzv80fmxgr.jpeg" alt=""></p><ul><li>BIOS(Basic Input/Output System)，基本输入输出系统，该系统存储于主板的ROM芯片上，计算机在开机时，会最先读取该系统，然后会有一个加电自检过程，这个过程其实就是检查CPU和内存，计算机最基本的组成单元(控制器、运算器和存储器)，还会检查其他硬件，若没有异常就开始加载BIOS程序到内存当中。详细的BIOS功能，这边就不说了，BIOS主要的一个功能就是存储了磁盘的启动顺序，BIOS会按照启动顺序去查找第一个磁盘头的MBR信息，并加载和执行MBR中的Bootloader程序，若第一个磁盘不存在MBR，则会继续查找第二个磁盘(PS：启动顺序可以在BIOS的界面中进行设置)，一旦BootLoader程序被检测并加载内存中，BIOS就将控制权交接给了BootLoader程序。 </li><li>MBR(Master Boot Record)，主引导记录，MBR存储于磁盘的头部，大小为512bytes，其中，446bytes用于存储BootLoader程序，64bytes用于存储分区表信息，最后2bytes用于MBR的有效性检查。 </li><li>GRUB(Grand Unified Bootloader)，多系统启动程序，其执行过程可分为三个步骤： <ul><li>Stage1：这个其实就是MBR，它的主要工作就是查找并加载第二段Bootloader程序(stage2)，但系统在没启动时，MBR根本找不到文件系统，也就找不到stage2所存放的位置，因此，就有了stage1_5</li><li>Stage1_5：该步骤就是为了识别文件系统</li><li>Stage2：GRUB程序会根据/boot/grub/grub.conf文件查找Kernel的信息，然后开始加载Kernel程序，当Kernel程序被检测并在加载到内存中，GRUB就将控制权交接给了Kernel程序。</li></ul></li></ul><p><strong>注意！现代操作系统使用了UEFI启动，但是我们现在不说UEFI，请自行忽略</strong></p><p>但是这样也需要我们的Boot程序按照<a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FMulti-booting&amp;objectId=1414532&amp;objectType=1&amp;isNewArticle=undefined">Mutileboot</a> 规范来编译内核，才可以被GRUB引导。 按照Mutileboot规范，内核必须在起始的8KB中的(512字节)包含这一个多引导项头（Multiboot header)。 <strong>而且，这个多引导项头里面必须有3个4字节对齐的块。</strong></p><h4 id="一些指令"><a href="#一些指令" class="headerlink" title="一些指令"></a>一些指令</h4><p><code>clt</code>，表示clear interrupt，关闭所有硬件中断</p><p><code>hlt</code> ，表示停止CPU运行，即HALT</p><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://blog.csdn.net/MQ0522/article/details/114823770">C语言：内存分配—-栈区、堆区、全局区、常量区和代码区_c 内存布局-CSDN博客</a></p><p><a href="https://cloud.tencent.com/developer/article/1414532">VV的操作系统笔记（一）操作系统I SeeYou!!!! -腾讯云开发者社区-腾讯云</a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 操作系统 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>软路由教程</title>
+      <link href="/posts/5971328.html"/>
+      <url>/posts/5971328.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>广工计组实验</title>
+      <link href="/posts/b7a55cc3.html"/>
+      <url>/posts/b7a55cc3.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="计算机组成原理实验"><a href="#计算机组成原理实验" class="headerlink" title="计算机组成原理实验"></a>计算机组成原理实验</h1>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 学习 </tag>
+            
+            <tag> 计算计组成原理 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>计算机网络</title>
       <link href="/posts/e255a10a.html"/>
       <url>/posts/e255a10a.html</url>
