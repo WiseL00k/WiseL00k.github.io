@@ -1,0 +1,118 @@
+---
+import { FEATURES } from '@/config';
+
+interface Props {
+  heading?: boolean;
+}
+
+const { heading = true } = Astro.props;
+const { enabled, provider, giscus, twikoo } = FEATURES.comments;
+const ready =
+  enabled &&
+  (provider === 'giscus'
+    ? Boolean(giscus.repo && giscus.repoId && giscus.category && giscus.categoryId)
+    : Boolean(twikoo.envId && twikoo.src));
+
+if (enabled && !ready) {
+  console.warn(`[comments] ${provider} 配置不完整，评论区不会渲染。`);
+}
+---
+
+{
+  ready && (
+    <section class="comments" id="comments" aria-label="评论">
+      {heading && <h2 class="headline">评论</h2>}
+      <div
+        class="comments-root"
+        data-comments={provider}
+        data-giscus={JSON.stringify(giscus)}
+        data-twikoo={JSON.stringify(twikoo)}
+      >
+        <p class="meta">评论加载中…</p>
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .comments {
+    margin-top: clamp(48px, 7vw, 80px);
+    padding-top: clamp(32px, 5vw, 48px);
+    border-top: 1px solid var(--hairline);
+  }
+
+  .comments .headline {
+    margin-bottom: 24px;
+    font-size: 1.5rem;
+  }
+</style>
+
+<script>
+  declare global {
+    interface Window {
+      twikoo?: { init(options: Record<string, unknown>): void };
+    }
+  }
+
+  const root = document.querySelector<HTMLElement>('[data-comments]');
+
+  function theme(): 'light' | 'dark' {
+    return document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
+  }
+
+  function loadGiscus(host: HTMLElement) {
+    const config = JSON.parse(host.dataset.giscus ?? '{}');
+    const script = document.createElement('script');
+    script.src = 'https://giscus.app/client.js';
+    script.async = true;
+    script.crossOrigin = 'anonymous';
+    const attributes: Record<string, string> = {
+      repo: config.repo,
+      'repo-id': config.repoId,
+      category: config.category,
+      'category-id': config.categoryId,
+      mapping: 'pathname',
+      strict: '0',
+      'reactions-enabled': '1',
+      'emit-metadata': '0',
+      'input-position': 'top',
+      theme: theme(),
+      lang: 'zh-CN',
+      loading: 'lazy',
+    };
+    for (const [key, value] of Object.entries(attributes)) script.setAttribute(`data-${key}`, value);
+    host.replaceChildren(script);
+
+    document.addEventListener('themechange', () => {
+      const frame = document.querySelector<HTMLIFrameElement>('iframe.giscus-frame');
+      frame?.contentWindow?.postMessage({ giscus: { setConfig: { theme: theme() } } }, 'https://giscus.app');
+    });
+  }
+
+  function loadTwikoo(host: HTMLElement) {
+    const config = JSON.parse(host.dataset.twikoo ?? '{}');
+    const script = document.createElement('script');
+    script.src = config.src;
+    script.async = true;
+    script.onload = () => {
+      const target = document.createElement('div');
+      target.id = 'tcomment';
+      host.replaceChildren(target);
+      window.twikoo?.init({ envId: config.envId, el: '#tcomment', path: location.pathname, lang: 'zh-CN' });
+    };
+    document.head.append(script);
+  }
+
+  if (root) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (!entries.some((entry) => entry.isIntersecting)) return;
+        observer.disconnect();
+        if (root.dataset.comments === 'giscus') loadGiscus(root);
+        else loadTwikoo(root);
+      },
+      { rootMargin: '600px 0px' },
+    );
+    observer.observe(root);
+  }
+</script>

@@ -1,0 +1,104 @@
+---
+import Icon from '@/components/Icon.astro';
+import PostList from '@/components/PostList.astro';
+import ProjectCard from '@/components/ProjectCard.astro';
+import { SITE } from '@/config';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getPosts } from '@/utils/posts';
+import { getProjects } from '@/utils/projects';
+
+const projects = (await getProjects()).filter((project) => project.data.featured);
+const posts = await getPosts();
+const recent = posts.slice(0, 6);
+const isWide = (i: number) => projects.length > 1 && projects.length % 2 === 1 && i === 0;
+---
+
+<BaseLayout>
+  <section class="hero">
+    <div class="container">
+      <span class="eyebrow" data-intro style="--i: 0">// embedded · robotics · systems</span>
+      <h1 class="display" data-intro style="--i: 1">{SITE.title}</h1>
+      <p class="lede intro" data-intro style="--i: 2">{SITE.intro}</p>
+      <p class="terminal" data-intro style="--i: 3">
+        <span class="prompt">~ $</span> echo $MOTTO<br />
+        <span class="out">{SITE.motto}</span><span class="caret" aria-hidden="true"></span>
+      </p>
+      <div class="btn-row" data-intro style="--i: 4">
+        <a class="btn btn-primary" href="#projects">查看项目</a>
+        <a class="btn btn-ghost" href="/posts/">阅读文章</a>
+        <a class="icon-btn" href={SITE.github} target="_blank" rel="noopener" aria-label="GitHub">
+          <Icon name="github" size={20} />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section container" id="projects">
+    <div class="section-head" data-reveal>
+      <div>
+        <span class="eyebrow">// 01 项目</span>
+        <h2 class="headline">精选项目</h2>
+      </div>
+      <a class="link-arrow" href="/projects/">全部项目<Icon name="arrow-right" /></a>
+    </div>
+    <div class="project-grid">
+      {
+        projects.map((project, i) => (
+          <div data-reveal class:list={[{ wide: isWide(i) }]} style={`--i: ${i}`}>
+            <ProjectCard project={project} wide={isWide(i)} />
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section container">
+    <div class="section-head" data-reveal>
+      <div>
+        <span class="eyebrow">// 02 文章</span>
+        <h2 class="headline">最近文章</h2>
+      </div>
+      <a class="link-arrow" href="/posts/">全部 {posts.length} 篇<Icon name="arrow-right" /></a>
+    </div>
+    <PostList posts={recent} />
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    position: relative;
+    isolation: isolate;
+    padding-block: clamp(72px, 13vw, 168px) clamp(16px, 3vw, 40px);
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(60% 70% at 85% 0%, var(--glow), transparent 70%),
+      linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0 / 44px 44px,
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0 / 44px 44px;
+    -webkit-mask-image: radial-gradient(90% 80% at 70% 0%, #000 30%, transparent 75%);
+    mask-image: radial-gradient(90% 80% at 70% 0%, #000 30%, transparent 75%);
+  }
+
+  .display {
+    margin-top: 6px;
+  }
+
+  .intro {
+    max-width: 30em;
+    margin-top: 22px;
+  }
+
+  .terminal {
+    margin-top: 32px;
+  }
+
+  .btn-row {
+    margin-top: 36px;
+  }
+</style>

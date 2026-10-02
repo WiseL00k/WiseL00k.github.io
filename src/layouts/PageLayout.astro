@@ -1,0 +1,47 @@
+---
+import '@/styles/prose.css';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+interface Props {
+  frontmatter: {
+    title: string;
+    description?: string;
+    eyebrow?: string;
+    lede?: string;
+    avatar?: string;
+  };
+}
+
+const { title, description, eyebrow, lede, avatar } = Astro.props.frontmatter;
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="container-narrow">
+    <header class="page-head">
+      {avatar && <img class="avatar" src={avatar} alt="" width="88" height="88" data-intro />}
+      {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+      <h1 class="title">{title}</h1>
+      {lede && <p class="lede">{lede}</p>}
+    </header>
+    <div class="prose">
+      <slot />
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  import '@/scripts/prose';
+</script>
+
+<style>
+  .avatar {
+    width: 88px;
+    height: 88px;
+    margin-bottom: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow:
+      0 0 0 4px var(--bg),
+      0 0 0 5px var(--hairline-strong);
+  }
+</style>

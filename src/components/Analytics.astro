@@ -1,0 +1,8 @@
+---
+import { FEATURES } from '@/config';
+
+const { enabled, umami } = FEATURES.analytics;
+const show = enabled && Boolean(umami.src && umami.websiteId);
+---
+
+{show && <script is:inline defer src={umami.src} data-website-id={umami.websiteId} />}

@@ -1,0 +1,60 @@
+---
+import Icon from './Icon.astro';
+---
+
+<button type="button" class="icon-btn theme-toggle" data-theme-toggle aria-label="切换深色模式">
+  <Icon name="moon" class="i-moon" />
+  <Icon name="sun" class="i-sun" />
+</button>
+
+<style>
+  .theme-toggle :global(.i-sun) {
+    display: none;
+  }
+
+  :global(html[data-theme='dark']) .theme-toggle :global(.i-sun) {
+    display: block;
+  }
+
+  :global(html[data-theme='dark']) .theme-toggle :global(.i-moon) {
+    display: none;
+  }
+</style>
+
+<script>
+  const root = document.documentElement;
+  const media = matchMedia('(prefers-color-scheme: dark)');
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
+
+  function stored(): string | null {
+    try {
+      return localStorage.getItem('theme');
+    } catch {
+      return null;
+    }
+  }
+
+  function apply(theme: 'light' | 'dark', animate: boolean) {
+    const swap = () => {
+      root.dataset.theme = theme;
+      document.dispatchEvent(new CustomEvent('themechange', { detail: theme }));
+    };
+    if (animate && !reduceMotion.matches && document.startViewTransition) {
+      document.startViewTransition(swap);
+    } else {
+      swap();
+    }
+  }
+
+  document.querySelector('[data-theme-toggle]')?.addEventListener('click', () => {
+    const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    try {
+      localStorage.setItem('theme', next);
+    } catch {}
+    apply(next, true);
+  });
+
+  media.addEventListener('change', (event) => {
+    if (!stored()) apply(event.matches ? 'dark' : 'light', false);
+  });
+</script>

@@ -1,0 +1,18 @@
+---
+const target = new URL('/posts/', Astro.site);
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>文章列表已移动</title>
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href={target} />
+    <meta http-equiv="refresh" content="0; url=/posts/" />
+  </head>
+  <body>
+    <p>文章列表已移动到 <a href="/posts/">/posts/</a>。</p>
+  </body>
+</html>

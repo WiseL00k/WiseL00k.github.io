@@ -1,0 +1,24 @@
+---
+import ProjectCard from '@/components/ProjectCard.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getProjects } from '@/utils/projects';
+
+const projects = await getProjects();
+---
+
+<BaseLayout title="项目" description="做过的项目：上位机工具、硬件和各种实验。">
+  <header class="page-head container">
+    <span class="eyebrow">// projects</span>
+    <h1 class="title">项目</h1>
+    <p class="lede">从 EtherCAT 上位机到手焊的 4 位 CPU，做过的东西都放在这里。</p>
+  </header>
+  <div class="container project-grid">
+    {
+      projects.map((project, i) => (
+        <div data-reveal style={`--i: ${i}`}>
+          <ProjectCard project={project} priority={i < 2} />
+        </div>
+      ))
+    }
+  </div>
+</BaseLayout>

@@ -1,0 +1,87 @@
+---
+import '@/styles/tokens.css';
+import '@/styles/global.css';
+import Analytics from '@/components/Analytics.astro';
+import Footer from '@/components/Footer.astro';
+import Header from '@/components/Header.astro';
+import Search from '@/components/Search.astro';
+import { FEATURES, SITE } from '@/config';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: 'website' | 'article';
+  publishedTime?: Date;
+  noindex?: boolean;
+}
+
+const { title, description = SITE.description, image, type = 'website', publishedTime, noindex = false } =
+  Astro.props;
+
+const pageTitle = title ? `${title} · ${SITE.title}` : `${SITE.title} · ${SITE.description.replace(/。$/, '')}`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = image ? new URL(image, Astro.site) : undefined;
+---
+
+<!doctype html>
+<html lang={SITE.lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content={SITE.title} />
+    <meta property="og:title" content={title ?? SITE.title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="zh_CN" />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+    {publishedTime && <meta property="article:published_time" content={publishedTime.toISOString()} />}
+    <meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    {FEATURES.rss && <link rel="alternate" type="application/rss+xml" title={SITE.title} href="/rss.xml" />}
+    <script is:inline>
+      (() => {
+        const root = document.documentElement;
+        let theme = null;
+        try {
+          theme = localStorage.getItem('theme');
+        } catch {}
+        if (theme !== 'light' && theme !== 'dark') {
+          theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        root.dataset.theme = theme;
+        if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          root.classList.add('reveal-on');
+          setTimeout(() => {
+            if (!window.__revealReady) root.classList.remove('reveal-on');
+          }, 2500);
+        }
+      })();
+    </script>
+    <Analytics />
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳到正文</a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+    {FEATURES.search && <Search />}
+    <script>
+      import '@/scripts/reveal';
+    </script>
+  </body>
+</html>

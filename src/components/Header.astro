@@ -1,0 +1,159 @@
+---
+import { FEATURES, NAV } from '@/config';
+import Icon from './Icon.astro';
+import ThemeToggle from './ThemeToggle.astro';
+
+const raw = Astro.url.pathname;
+const path = raw.endsWith('/') || raw.endsWith('.html') ? raw : `${raw}/`;
+const items = FEATURES.comments.enabled ? [...NAV, { label: '留言', href: '/comments/' }] : NAV;
+
+function isActive(href: string): boolean {
+  if (path.startsWith(href)) return true;
+  return href === '/posts/' && path.startsWith('/tags/');
+}
+---
+
+<header class="site-header">
+  <div class="bar container">
+    <a class="brand" href="/" aria-label="WiseL00k 首页">
+      <span class="brand-mark" aria-hidden="true"><Icon name="terminal" size={14} /></span>
+      <span class="brand-name">wisel00k</span>
+    </a>
+
+    <nav aria-label="主导航">
+      <ul>
+        {
+          items.map((item) => (
+            <li>
+              <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="actions">
+      {
+        FEATURES.search && (
+          <button type="button" class="icon-btn search-btn" data-search-open aria-label="搜索">
+            <Icon name="search" />
+            <kbd data-search-kbd>Ctrl K</kbd>
+          </button>
+        )
+      }
+      <ThemeToggle />
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    height: var(--nav-h);
+    background: var(--nav-bg);
+    border-bottom: 1px solid var(--hairline);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+    view-transition-name: site-header;
+  }
+
+  .bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 100%;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: auto;
+    font-family: var(--font-mono);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .brand-mark {
+    display: grid;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 7px;
+    background: var(--text);
+    color: var(--bg);
+    transition: transform var(--dur) var(--ease);
+  }
+
+  .brand:hover .brand-mark {
+    transform: rotate(-8deg) scale(1.05);
+  }
+
+  nav ul {
+    display: flex;
+    gap: 2px;
+    padding: 0;
+    list-style: none;
+  }
+
+  nav a {
+    display: block;
+    padding: 6px 12px;
+    border-radius: var(--radius-pill);
+    font-size: 14px;
+    color: var(--text-2);
+    transition:
+      color var(--dur-fast) var(--ease),
+      background-color var(--dur-fast) var(--ease);
+  }
+
+  nav a:hover {
+    color: var(--text);
+  }
+
+  nav a[aria-current='page'] {
+    color: var(--text);
+    background: var(--surface-2);
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .search-btn {
+    display: inline-flex;
+    align-items: center;
+    width: auto;
+    gap: 8px;
+    padding: 0 8px 0 10px;
+  }
+
+  @media (max-width: 720px) {
+    .search-btn {
+      justify-content: center;
+      width: 36px;
+      padding: 0;
+    }
+
+    .search-btn kbd {
+      display: none;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .brand-name {
+      display: none;
+    }
+
+    nav a {
+      padding: 6px 10px;
+    }
+  }
+</style>

@@ -1,0 +1,89 @@
+:root {
+  color-scheme: light;
+
+  --bg: #fbfbfd;
+  --surface: #ffffff;
+  --surface-2: #f5f5f7;
+  --surface-3: #e8e8ed;
+  --text: #1d1d1f;
+  --text-2: #424245;
+  --text-3: #6e6e73;
+  --hairline: rgb(0 0 0 / 0.08);
+  --hairline-strong: rgb(0 0 0 / 0.15);
+
+  --accent: #0071e3;
+  --accent-hover: #0077ed;
+  --accent-soft: rgb(0 113 227 / 0.1);
+  --link: #0066cc;
+
+  --green: #1d9a53;
+  --orange: #c45500;
+  --red: #d70015;
+  --purple: #8944ab;
+  --gray: #8e8e93;
+
+  --code-bg: #f5f5f7;
+  --nav-bg: rgb(251 251 253 / 0.72);
+  --grid-line: rgb(0 0 0 / 0.05);
+  --glow: rgb(0 113 227 / 0.14);
+
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.05);
+  --shadow-md: 0 1px 2px rgb(0 0 0 / 0.04), 0 14px 36px -14px rgb(0 0 0 / 0.2);
+  --shadow-lg: 0 30px 80px -24px rgb(0 0 0 / 0.3);
+
+  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Helvetica Neue',
+    'Segoe UI Variable Text', 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei UI',
+    'Microsoft YaHei', 'Noto Sans CJK SC', 'Source Han Sans SC', system-ui, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', SFMono-Regular, 'Cascadia Code', 'JetBrains Mono', Menlo,
+    Consolas, 'Liberation Mono', 'Noto Sans Mono CJK SC', monospace;
+
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius: 14px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 160ms;
+  --dur: 280ms;
+  --dur-slow: 560ms;
+
+  --container: 1080px;
+  --reading: 720px;
+  --gutter: clamp(20px, 5vw, 40px);
+  --nav-h: 52px;
+}
+
+html[data-theme='dark'] {
+  color-scheme: dark;
+
+  --bg: #000000;
+  --surface: #161617;
+  --surface-2: #1c1c1e;
+  --surface-3: #2c2c2e;
+  --text: #f5f5f7;
+  --text-2: #d1d1d6;
+  --text-3: #86868b;
+  --hairline: rgb(255 255 255 / 0.1);
+  --hairline-strong: rgb(255 255 255 / 0.18);
+
+  --accent: #0071e3;
+  --accent-hover: #0077ed;
+  --accent-soft: rgb(41 151 255 / 0.18);
+  --link: #2997ff;
+
+  --green: #30d158;
+  --orange: #ff9f0a;
+  --red: #ff453a;
+  --purple: #bf5af2;
+  --gray: #8e8e93;
+
+  --code-bg: #0f0f10;
+  --nav-bg: rgb(0 0 0 / 0.66);
+  --grid-line: rgb(255 255 255 / 0.06);
+  --glow: rgb(41 151 255 / 0.22);
+
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.5);
+  --shadow-md: 0 1px 2px rgb(0 0 0 / 0.5), 0 18px 40px -16px rgb(0 0 0 / 0.8);
+  --shadow-lg: 0 30px 80px -24px rgb(0 0 0 / 0.9);
+}

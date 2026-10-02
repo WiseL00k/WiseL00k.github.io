@@ -1,0 +1,66 @@
+---
+import { FEATURES, SITE } from '@/config';
+import { yearOf } from '@/utils/date';
+import Icon from './Icon.astro';
+
+const year = yearOf(new Date());
+---
+
+<footer class="site-footer">
+  <div class="container inner">
+    <p class="meta">© {SITE.since}–{year} {SITE.author} · <span class="motto">{SITE.motto}</span></p>
+    <ul class="links">
+      <li>
+        <a href={SITE.github} target="_blank" rel="noopener"><Icon name="github" size={14} />GitHub</a>
+      </li>
+      {
+        FEATURES.rss && (
+          <li>
+            <a href="/rss.xml"><Icon name="rss" size={14} />RSS</a>
+          </li>
+        )
+      }
+      <li>
+        <a href="https://astro.build" target="_blank" rel="noopener">Built with Astro</a>
+      </li>
+    </ul>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: clamp(64px, 10vw, 120px);
+    border-top: 1px solid var(--hairline);
+  }
+
+  .inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 24px;
+    padding-block: 28px 36px;
+  }
+
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 20px;
+    padding: 0;
+    list-style: none;
+    font-family: var(--font-mono);
+    font-size: 13px;
+  }
+
+  .links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-3);
+    transition: color var(--dur-fast) var(--ease);
+  }
+
+  .links a:hover {
+    color: var(--text);
+  }
+</style>

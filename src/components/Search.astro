@@ -1,0 +1,88 @@
+<p class="search-toast" data-search-toast hidden role="status">
+  搜索索引在构建时生成，本地请用 <code>npm run build && npm run preview</code> 预览。
+</p>
+
+<style>
+  .search-toast {
+    position: fixed;
+    left: 50%;
+    bottom: 24px;
+    z-index: 60;
+    max-width: calc(100% - 32px);
+    padding: 10px 16px;
+    border-radius: var(--radius-pill);
+    background: var(--surface);
+    box-shadow:
+      inset 0 0 0 1px var(--hairline-strong),
+      var(--shadow-md);
+    font-size: 14px;
+    color: var(--text-2);
+    transform: translateX(-50%);
+  }
+
+  .search-toast code {
+    font-family: var(--font-mono);
+    font-size: 13px;
+  }
+</style>
+
+<script>
+  type PagefindModal = HTMLElement & { open(): void };
+
+  const isApple = /Mac|iPhone|iPad/.test(navigator.userAgent);
+  document.querySelectorAll('[data-search-kbd]').forEach((el) => {
+    el.textContent = isApple ? '⌘ K' : 'Ctrl K';
+  });
+
+  let pending: Promise<PagefindModal | null> | null = null;
+
+  function showToast() {
+    const toast = document.querySelector<HTMLElement>('[data-search-toast]');
+    if (!toast) return;
+    toast.hidden = false;
+    setTimeout(() => (toast.hidden = true), 4000);
+  }
+
+  function load(): Promise<PagefindModal | null> {
+    pending ??= new Promise((resolve) => {
+      const css = document.createElement('link');
+      css.rel = 'stylesheet';
+      css.href = '/pagefind/pagefind-component-ui.css';
+      const script = document.createElement('script');
+      script.type = 'module';
+      script.src = '/pagefind/pagefind-component-ui.js';
+      script.onload = async () => {
+        const modal = document.createElement('pagefind-modal') as PagefindModal;
+        modal.setAttribute('reset-on-close', '');
+        document.body.append(modal);
+        await customElements.whenDefined('pagefind-modal');
+        resolve(modal);
+      };
+      script.onerror = () => {
+        css.remove();
+        script.remove();
+        pending = null;
+        showToast();
+        resolve(null);
+      };
+      document.head.append(css, script);
+    });
+    return pending;
+  }
+
+  async function open() {
+    (await load())?.open();
+  }
+
+  document.querySelectorAll('[data-search-open]').forEach((button) => {
+    button.addEventListener('click', open);
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (!(event.metaKey || event.ctrlKey) || event.key.toLowerCase() !== 'k') return;
+    const target = event.target as HTMLElement;
+    if (target.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(target.tagName)) return;
+    event.preventDefault();
+    open();
+  });
+</script>

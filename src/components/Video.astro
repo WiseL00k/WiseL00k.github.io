@@ -1,0 +1,188 @@
+---
+import { FEATURES } from '@/config';
+import Icon from './Icon.astro';
+
+interface Props {
+  bvid?: string;
+  youtube?: string;
+  src?: string;
+  poster?: string;
+  title?: string;
+  page?: number;
+}
+
+const { bvid, youtube, src, poster, title = '视频', page = 1 } = Astro.props;
+const enabled = FEATURES.video.enabled;
+const provider = bvid ? 'bilibili' : youtube ? 'youtube' : 'file';
+
+const watchUrl = bvid
+  ? `https://www.bilibili.com/video/${bvid}${page > 1 ? `?p=${page}` : ''}`
+  : youtube
+    ? `https://www.youtube.com/watch?v=${youtube}`
+    : src;
+
+const embedUrl = bvid
+  ? `https://player.bilibili.com/player.html?bvid=${bvid}&p=${page}&autoplay=1&danmaku=0&high_quality=1`
+  : youtube
+    ? `https://www.youtube-nocookie.com/embed/${youtube}?autoplay=1&rel=0`
+    : undefined;
+
+const label = { bilibili: '在 B 站观看', youtube: '在 YouTube 观看', file: '观看视频' }[provider];
+const source = { bilibili: 'Bilibili', youtube: 'YouTube', file: '' }[provider];
+---
+
+{
+  watchUrl && !enabled && (
+    <a class="video-link" href={watchUrl} target="_blank" rel="noopener">
+      <span class="play">
+        <Icon name="play" size={14} />
+      </span>
+      <span class="text">
+        <span class="video-title">{title}</span>
+        <span class="meta">{label}</span>
+      </span>
+      <Icon name="arrow-up-right" class="ext" />
+    </a>
+  )
+}
+
+{
+  watchUrl && enabled && provider === 'file' && (
+    <video class="video-frame" controls preload="none" playsinline poster={poster} src={src}>
+      <a href={src}>{label}</a>
+    </video>
+  )
+}
+
+{
+  watchUrl && enabled && embedUrl && (
+    <div class="video-frame" data-video-embed={embedUrl} data-video-title={title}>
+      {poster && <img src={poster} alt="" loading="lazy" decoding="async" />}
+      <button type="button" class="video-play" aria-label={`播放：${title}`}>
+        <Icon name="play" size={22} />
+      </button>
+      <span class="video-caption">
+        {title}
+        <span class="meta"> · {source}</span>
+      </span>
+    </div>
+  )
+}
+
+<style>
+  .video-link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-block: 1.4em;
+    padding: 14px 18px;
+    border-radius: var(--radius);
+    background: var(--surface-2);
+    box-shadow: inset 0 0 0 1px var(--hairline);
+    text-decoration: none;
+    color: var(--text);
+    transition: box-shadow var(--dur-fast) var(--ease);
+  }
+
+  .video-link:hover {
+    box-shadow: inset 0 0 0 1px var(--hairline-strong);
+  }
+
+  .play {
+    display: grid;
+    flex: none;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--text);
+    color: var(--bg);
+  }
+
+  .text {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .video-title {
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .video-link :global(.ext) {
+    color: var(--text-3);
+  }
+
+  .video-frame {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    margin-block: 1.4em;
+    overflow: hidden;
+    border-radius: var(--radius);
+    background:
+      radial-gradient(80% 100% at 50% 0%, var(--glow), transparent 70%),
+      #0b0b0c;
+    cursor: pointer;
+  }
+
+  .video-frame img,
+  .video-frame :global(iframe) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    object-fit: cover;
+  }
+
+  .video-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: grid;
+    place-items: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgb(255 255 255 / 0.9);
+    color: #000;
+    transform: translate(-50%, -50%);
+    transition: transform var(--dur) var(--ease);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+
+  .video-frame:hover .video-play {
+    transform: translate(-50%, -50%) scale(1.06);
+  }
+
+  .video-caption {
+    position: absolute;
+    left: 16px;
+    bottom: 14px;
+    font-size: 14px;
+    color: #f5f5f7;
+  }
+
+  .video-caption .meta {
+    color: rgb(245 245 247 / 0.7);
+  }
+</style>
+
+<script>
+  document.addEventListener('click', (event) => {
+    const frame = (event.target as HTMLElement).closest<HTMLElement>('[data-video-embed]');
+    if (!frame || frame.querySelector('iframe')) return;
+    const iframe = document.createElement('iframe');
+    iframe.src = frame.dataset.videoEmbed ?? '';
+    iframe.title = frame.dataset.videoTitle ?? '视频';
+    iframe.allow = 'autoplay; fullscreen; picture-in-picture; encrypted-media';
+    iframe.allowFullscreen = true;
+    iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+    frame.replaceChildren(iframe);
+  });
+</script>

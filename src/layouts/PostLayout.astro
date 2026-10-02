@@ -1,0 +1,262 @@
+---
+import type { MarkdownHeading } from 'astro';
+import '@/styles/prose.css';
+import Comments from '@/components/Comments.astro';
+import Icon from '@/components/Icon.astro';
+import Toc from '@/components/Toc.astro';
+import { FEATURES, SITE } from '@/config';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { formatDate } from '@/utils/date';
+import { excerpt, postSlug, postUrl, tagUrl, type Post } from '@/utils/posts';
+import { readingMinutes, transitionName } from '@/utils/text';
+
+interface Props {
+  post: Post;
+  headings: MarkdownHeading[];
+  prev?: Post;
+  next?: Post;
+}
+
+const { post, headings, prev, next } = Astro.props;
+const { title, date, updated, tags } = post.data;
+const minutes = readingMinutes(post.body);
+
+const depths = [...new Set(headings.map((h) => h.depth))].sort();
+const tocItems = headings.filter((h) => depths.slice(0, 2).includes(h.depth));
+const showToc = FEATURES.toc && tocItems.length >= 2;
+const showComments = FEATURES.comments.enabled && post.data.comments;
+---
+
+<BaseLayout title={title} description={excerpt(post, 150) || SITE.description} type="article" publishedTime={date}>
+  <div class:list={['post-grid', { 'has-toc': showToc }]}>
+    <article class="post" data-pagefind-body>
+      <header class="post-head">
+        <p class="meta">
+          <time datetime={date.toISOString()}>{formatDate(date)}</time>
+          {
+            updated && (
+              <span>
+                {' '}
+                · 更新于 <time datetime={updated.toISOString()}>{formatDate(updated)}</time>
+              </span>
+            )
+          }
+          <span> · 约 {minutes} 分钟</span>
+        </p>
+        <h1 class="title">
+          <span class="vt-text" style={`view-transition-name: ${transitionName('post', postSlug(post))}`}>{title}</span>
+        </h1>
+        {
+          tags.length > 0 && (
+            <ul class="chips" data-pagefind-ignore>
+              {tags.map((tag) => (
+                <li>
+                  <a class="chip" href={tagUrl(tag)}>
+                    {tag}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )
+        }
+      </header>
+
+      {
+        showToc && (
+          <details class="toc-inline" data-pagefind-ignore>
+            <summary>
+              <Icon name="list" />
+              目录
+            </summary>
+            <Toc items={tocItems} />
+          </details>
+        )
+      }
+
+      <div class="prose">
+        <slot />
+      </div>
+    </article>
+
+    {
+      showToc && (
+        <aside class="toc-aside" aria-label="目录" data-pagefind-ignore>
+          <p class="eyebrow">目录</p>
+          <Toc items={tocItems} />
+        </aside>
+      )
+    }
+  </div>
+
+  {
+    (prev || next) && (
+      <nav class="pager container-narrow" aria-label="更多文章">
+        {prev ? (
+          <a class="pager-card" href={postUrl(prev)}>
+            <span class="meta">
+              <Icon name="arrow-left" size={13} />
+              上一篇
+            </span>
+            <span class="pager-title">{prev.data.title}</span>
+          </a>
+        ) : (
+          <span />
+        )}
+        {next ? (
+          <a class="pager-card next" href={postUrl(next)}>
+            <span class="meta">
+              下一篇
+              <Icon name="arrow-right" size={13} />
+            </span>
+            <span class="pager-title">{next.data.title}</span>
+          </a>
+        ) : (
+          <span />
+        )}
+      </nav>
+    )
+  }
+
+  {
+    showComments && (
+      <div class="container-narrow">
+        <Comments />
+      </div>
+    )
+  }
+</BaseLayout>
+
+<script>
+  import '@/scripts/prose';
+</script>
+
+<style>
+  .post-grid {
+    width: min(100% - 2 * var(--gutter), var(--reading));
+    margin-inline: auto;
+  }
+
+  .post-head {
+    padding-block: clamp(48px, 8vw, 96px) clamp(28px, 4vw, 44px);
+  }
+
+  .post-head .title {
+    margin-block: 14px 20px;
+  }
+
+  .toc-inline {
+    margin-bottom: 32px;
+    padding: 12px 16px;
+    border-radius: var(--radius);
+    background: var(--surface-2);
+    box-shadow: inset 0 0 0 1px var(--hairline);
+  }
+
+  .toc-inline summary {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-2);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .toc-inline summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .toc-inline[open] summary {
+    margin-bottom: 10px;
+  }
+
+  .toc-inline :global(.toc) {
+    max-height: 50vh;
+    overflow: auto;
+  }
+
+  .toc-aside {
+    display: none;
+  }
+
+  @media (min-width: 1200px) {
+    .post-grid.has-toc {
+      display: grid;
+      grid-template-columns: minmax(0, var(--reading)) 240px;
+      justify-content: center;
+      gap: 72px;
+      width: min(100% - 2 * var(--gutter), calc(var(--reading) + 312px));
+    }
+
+    .has-toc .toc-inline {
+      display: none;
+    }
+
+    .toc-aside {
+      position: sticky;
+      top: calc(var(--nav-h) + 40px);
+      display: block;
+      align-self: start;
+      max-height: calc(100dvh - var(--nav-h) - 80px);
+      margin-top: clamp(48px, 8vw, 96px);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+    }
+
+    .toc-aside .eyebrow {
+      padding-left: 10px;
+    }
+  }
+
+  .pager {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: clamp(56px, 8vw, 88px);
+  }
+
+  .pager-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 18px 20px;
+    border-radius: var(--radius);
+    box-shadow: inset 0 0 0 1px var(--hairline);
+    transition:
+      background-color var(--dur-fast) var(--ease),
+      box-shadow var(--dur-fast) var(--ease);
+  }
+
+  .pager-card:hover {
+    background: var(--surface-2);
+    box-shadow: inset 0 0 0 1px var(--hairline-strong);
+  }
+
+  .pager-card .meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .pager-card.next {
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  .pager-title {
+    font-weight: 500;
+    line-height: 1.45;
+  }
+
+  @media (max-width: 600px) {
+    .pager {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .pager-card.next {
+      align-items: flex-start;
+      text-align: left;
+    }
+  }
+</style>

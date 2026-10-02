@@ -1,0 +1,46 @@
+---
+import Comments from '@/components/Comments.astro';
+import Icon from '@/components/Icon.astro';
+import { FEATURES, SITE } from '@/config';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const open = FEATURES.comments.enabled;
+---
+
+<BaseLayout title="留言板" description="有什么想问的、想说的，都可以在这里留言。" noindex={!open}>
+  <div class="container-narrow">
+    <header class="page-head">
+      <span class="eyebrow">// guestbook</span>
+      <h1 class="title">留言板</h1>
+      <p class="lede">有什么想问的？有什么想说的？有什么想吐槽的？哪怕是有什么想吃的，都可以告诉我。</p>
+    </header>
+    {
+      open ? (
+        <Comments heading={false} />
+      ) : (
+        <div class="closed">
+          <p>留言功能暂未开放，可以先在 GitHub 上找到我。</p>
+          <a class="btn btn-ghost" href={SITE.github} target="_blank" rel="noopener">
+            <Icon name="github" />
+            GitHub
+          </a>
+        </div>
+      )
+    }
+  </div>
+</BaseLayout>
+
+<style>
+  .closed {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 24px;
+    border-radius: var(--radius-lg);
+    background: var(--surface-2);
+    box-shadow: inset 0 0 0 1px var(--hairline);
+    color: var(--text-2);
+  }
+</style>

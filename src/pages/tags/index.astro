@@ -1,0 +1,70 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getPosts, getTags, tagUrl } from '@/utils/posts';
+
+const tags = getTags(await getPosts());
+---
+
+<BaseLayout title="标签" description="按标签浏览全部文章。">
+  <header class="page-head container-narrow">
+    <span class="eyebrow">// tags</span>
+    <h1 class="title">标签</h1>
+    <p class="lede">{tags.length} 个标签。</p>
+  </header>
+
+  <ul class="tag-cloud container-narrow">
+    {
+      tags.map(({ tag, count }, i) => (
+        <li data-reveal style={`--i: ${Math.min(i, 8)}`}>
+          <a class="tag" href={tagUrl(tag)}>
+            <span>{tag}</span>
+            <span class="count">{count}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</BaseLayout>
+
+<style>
+  .tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    height: 40px;
+    padding: 0 8px 0 16px;
+    border-radius: var(--radius-pill);
+    background: var(--surface);
+    box-shadow: inset 0 0 0 1px var(--hairline-strong);
+    font-size: 15px;
+    transition:
+      background-color var(--dur-fast) var(--ease),
+      box-shadow var(--dur-fast) var(--ease);
+  }
+
+  .tag:hover {
+    background: var(--surface-2);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--link) 45%, transparent);
+  }
+
+  .count {
+    display: inline-grid;
+    place-items: center;
+    min-width: 26px;
+    height: 26px;
+    padding: 0 8px;
+    border-radius: var(--radius-pill);
+    background: var(--surface-2);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-3);
+  }
+</style>

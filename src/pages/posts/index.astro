@@ -1,0 +1,58 @@
+---
+import Icon from '@/components/Icon.astro';
+import PostList from '@/components/PostList.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { yearOf } from '@/utils/date';
+import { getPosts, type Post } from '@/utils/posts';
+
+const posts = await getPosts();
+const groups = new Map<number, Post[]>();
+for (const post of posts) {
+  const year = yearOf(post.data.date);
+  groups.set(year, [...(groups.get(year) ?? []), post]);
+}
+---
+
+<BaseLayout title="文章" description="全部文章，按时间倒序。">
+  <header class="page-head container-narrow">
+    <span class="eyebrow">// posts</span>
+    <h1 class="title">文章</h1>
+    <p class="lede">共 {posts.length} 篇，记录学习和折腾的过程。</p>
+    <a class="link-arrow tags-link" href="/tags/">按标签浏览<Icon name="arrow-right" /></a>
+  </header>
+
+  <div class="container-narrow">
+    {
+      [...groups].map(([year, list]) => (
+        <section class="year-group" aria-label={`${year} 年`}>
+          <h2 class="year" data-reveal>
+            {year}
+            <span class="meta">{list.length} 篇</span>
+          </h2>
+          <PostList posts={list} />
+        </section>
+      ))
+    }
+  </div>
+</BaseLayout>
+
+<style>
+  .tags-link {
+    margin-top: 20px;
+  }
+
+  .year-group + .year-group {
+    margin-top: clamp(40px, 6vw, 64px);
+  }
+
+  .year {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 8px;
+    font-family: var(--font-mono);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+  }
+</style>

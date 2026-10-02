@@ -1,0 +1,51 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="页面不存在" noindex>
+  <section class="not-found container-narrow">
+    <p class="terminal" data-intro style="--i: 0">
+      <span class="prompt">~ $</span> cd <span data-path>/missing</span><br />
+      <span class="err">cd: no such file or directory: <span data-path>/missing</span></span>
+    </p>
+    <h1 class="display" data-intro style="--i: 1">404</h1>
+    <p class="lede" data-intro style="--i: 2">这个页面不存在，可能已经被移走了。</p>
+    <div class="btn-row" data-intro style="--i: 3">
+      <a class="btn btn-primary" href="/">回到首页</a>
+      <a class="btn btn-ghost" href="/posts/">看看文章</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  let path = location.pathname;
+  try {
+    path = decodeURIComponent(path);
+  } catch {}
+  document.querySelectorAll('[data-path]').forEach((el) => {
+    el.textContent = path;
+  });
+</script>
+
+<style>
+  .not-found {
+    padding-block: clamp(72px, 12vw, 144px) 0;
+  }
+
+  .terminal {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .display {
+    margin-top: 36px;
+  }
+
+  .lede {
+    margin-top: 12px;
+  }
+
+  .btn-row {
+    margin-top: 32px;
+  }
+</style>

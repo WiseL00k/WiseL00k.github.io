@@ -1,0 +1,201 @@
+---
+import { Image } from 'astro:assets';
+import { projectUrl, STATUS_LABEL, type Project } from '@/utils/projects';
+import { transitionName } from '@/utils/text';
+import Icon from './Icon.astro';
+
+interface Props {
+  project: Project;
+  wide?: boolean;
+  priority?: boolean;
+}
+
+const { project, wide = false, priority = false } = Astro.props;
+const { title, summary, stack, repo, cover, coverAlt, status } = project.data;
+const sizes = wide
+  ? '(min-width: 1080px) 1080px, 100vw'
+  : '(min-width: 1080px) 530px, (min-width: 768px) 50vw, 100vw';
+---
+
+<article class:list={['card', { wide }]}>
+  <div class="media">
+    {
+      cover ? (
+        <Image
+          src={cover}
+          alt={coverAlt ?? `${title} 预览图`}
+          widths={[480, 720, 960, 1280]}
+          sizes={sizes}
+          loading={priority ? 'eager' : 'lazy'}
+          fetchpriority={priority ? 'high' : 'auto'}
+        />
+      ) : (
+        <div class="placeholder" aria-hidden="true">
+          <span>{stack.slice(0, 4).join(' · ')}</span>
+        </div>
+      )
+    }
+  </div>
+  <div class="body">
+    <span class="status" data-status={status}>{STATUS_LABEL[status]}</span>
+    <h3 class="name">
+      <a href={projectUrl(project)}>
+        <span class="vt-text" style={`view-transition-name: ${transitionName('project', project.id)}`}>{title}</span>
+      </a>
+    </h3>
+    <p class="summary">{summary}</p>
+    {
+      stack.length > 0 && (
+        <ul class="chips">
+          {stack.map((item) => (
+            <li class="chip">{item}</li>
+          ))}
+        </ul>
+      )
+    }
+    <div class="links">
+      <span class="link-arrow" aria-hidden="true">查看详情<Icon name="arrow-right" /></span>
+      {
+        repo && (
+          <a class="repo" href={repo} target="_blank" rel="noopener">
+            <Icon name="github" size={15} />
+            源码
+          </a>
+        )
+      }
+    </div>
+  </div>
+</article>
+
+<style>
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    background: var(--surface);
+    box-shadow:
+      inset 0 0 0 1px var(--hairline),
+      var(--shadow-sm);
+    transition:
+      transform var(--dur) var(--ease),
+      box-shadow var(--dur) var(--ease);
+  }
+
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow:
+      inset 0 0 0 1px var(--hairline-strong),
+      var(--shadow-md);
+  }
+
+  .media {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: var(--surface-2);
+  }
+
+  .wide .media {
+    aspect-ratio: 21 / 9;
+  }
+
+  .media :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 900ms var(--ease);
+  }
+
+  .card:hover .media :global(img) {
+    transform: scale(1.035);
+  }
+
+  .placeholder {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    background:
+      radial-gradient(70% 90% at 50% 0%, var(--glow), transparent 70%),
+      linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0 / 22px 22px,
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0 / 22px 22px,
+      var(--surface-2);
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: var(--text-3);
+    text-align: center;
+  }
+
+  .body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 12px;
+    padding: 22px 24px 24px;
+  }
+
+  .name {
+    font-size: 22px;
+    font-weight: 650;
+    letter-spacing: -0.015em;
+  }
+
+  .name a::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  .summary {
+    color: var(--text-2);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: auto;
+    padding-top: 6px;
+  }
+
+  .card:hover .link-arrow :global(svg) {
+    transform: translateX(3px);
+  }
+
+  .repo {
+    position: relative;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: var(--radius-pill);
+    font-size: 14px;
+    color: var(--text-2);
+    box-shadow: inset 0 0 0 1px var(--hairline-strong);
+    transition:
+      color var(--dur-fast) var(--ease),
+      background-color var(--dur-fast) var(--ease);
+  }
+
+  .repo:hover {
+    color: var(--text);
+    background: var(--surface-2);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card,
+    .card:hover,
+    .card:hover .media :global(img) {
+      transform: none;
+    }
+  }
+</style>

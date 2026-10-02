@@ -1,0 +1,136 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection, render } from 'astro:content';
+import '@/styles/prose.css';
+import Icon from '@/components/Icon.astro';
+import PostList from '@/components/PostList.astro';
+import Video from '@/components/Video.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getPosts } from '@/utils/posts';
+import { STATUS_LABEL } from '@/utils/projects';
+import { transitionName } from '@/utils/text';
+import { parseVideo } from '@/utils/video';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({ params: { id: project.id }, props: { project } }));
+}
+
+const { project } = Astro.props;
+const { title, summary, stack, repo, demo, video, cover, coverAlt, status } = project.data;
+const { Content } = await render(project);
+const related = (await getPosts()).filter((post) => post.data.project?.id === project.id);
+---
+
+<BaseLayout title={title} description={summary} image={cover?.src}>
+  <div data-pagefind-body>
+    <header class="project-head container-narrow">
+      <a class="back-link" href="/projects/" data-pagefind-ignore><Icon name="arrow-left" />全部项目</a>
+      <span class="status" data-status={status}>{STATUS_LABEL[status]}</span>
+      <h1 class="title">
+        <span class="vt-text" style={`view-transition-name: ${transitionName('project', project.id)}`}>{title}</span>
+      </h1>
+      <p class="lede">{summary}</p>
+      {
+        stack.length > 0 && (
+          <ul class="chips">
+            {stack.map((item) => (
+              <li class="chip">{item}</li>
+            ))}
+          </ul>
+        )
+      }
+      {
+        (repo || demo) && (
+          <div class="btn-row" data-pagefind-ignore>
+            {repo && (
+              <a class="btn btn-primary" href={repo} target="_blank" rel="noopener">
+                <Icon name="github" />
+                GitHub 仓库
+              </a>
+            )}
+            {demo && (
+              <a class="btn btn-ghost" href={demo} target="_blank" rel="noopener">
+                在线演示
+                <Icon name="arrow-up-right" />
+              </a>
+            )}
+          </div>
+        )
+      }
+    </header>
+
+    {
+      cover && (
+        <figure class="cover container" data-intro>
+          <Image
+            src={cover}
+            alt={coverAlt ?? `${title} 预览图`}
+            widths={[640, 960, 1280, 1600]}
+            sizes="(min-width: 1080px) 1080px, 100vw"
+            loading="eager"
+            fetchpriority="high"
+          />
+        </figure>
+      )
+    }
+
+    <div class="container-narrow">
+      {video && <Video {...parseVideo(video)} title={`${title} 演示视频`} />}
+      <div class="prose">
+        <Content components={{ Video }} />
+      </div>
+    </div>
+  </div>
+
+  {
+    related.length > 0 && (
+      <section class="related container-narrow">
+        <span class="eyebrow">// related</span>
+        <h2 class="headline">相关文章</h2>
+        <PostList posts={related} showTags={false} />
+      </section>
+    )
+  }
+</BaseLayout>
+
+<script>
+  import '@/scripts/prose';
+</script>
+
+<style>
+  .project-head {
+    padding-block: clamp(40px, 7vw, 80px) clamp(32px, 5vw, 48px);
+  }
+
+  .project-head .title {
+    margin-block: 14px 18px;
+  }
+
+  .project-head .chips {
+    margin-top: 22px;
+  }
+
+  .project-head .btn-row {
+    margin-top: 28px;
+  }
+
+  .cover {
+    margin-bottom: clamp(40px, 6vw, 72px);
+  }
+
+  .cover :global(img) {
+    width: 100%;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .related {
+    margin-top: clamp(64px, 9vw, 104px);
+  }
+
+  .related .headline {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+  }
+</style>
